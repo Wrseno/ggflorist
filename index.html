@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Islamic Center - Masjid Agung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .hero-bg {
+        background: linear-gradient(
+            rgba(59, 130, 246, 0.8),
+            rgba(37, 99, 235, 0.8)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><defs><pattern id="mosque" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></pattern></defs><rect width="1000" height="600" fill="url(%23mosque)"/></svg>');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .chat-container {
+        transition: all 0.3s ease-in-out;
+        transform: translateY(100%);
+      }
+
+      .chat-container.open {
+        transform: translateY(0);
+      }
+
+      .chat-bubble {
+        animation: bounce 0.5s ease-in-out;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .message {
+        opacity: 0;
+        animation: fadeIn 0.3s ease-in-out forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .typing-indicator::after {
+        content: "...";
+        animation: typing 1.5s infinite;
+      }
+
+      @keyframes typing {
+        0%,
+        20% {
+          content: ".";
+        }
+        40% {
+          content: "..";
+        }
+        60%,
+        100% {
+          content: "...";
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <i class="fas fa-mosque text-blue-600 text-2xl"></i>
+              <span class="ml-2 text-xl font-bold text-gray-800"
+                >Islamic Center</span
+              >
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a
+                href="#"
+                class="text-blue-600 hover:text-blue-800 px-3 py-2 text-sm font-medium"
+                >Beranda</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                >Tentang</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                >Kegiatan</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                >Kontak</a
+              >
+            </div>
+          </div>
+          <button class="md:hidden">
+            <i class="fas fa-bars text-gray-600"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="hero-bg min-h-screen flex items-center justify-center text-white pt-16"
+    >
+      <div class="text-center max-w-4xl mx-auto px-4">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          Hadist Indah untuk Momen Berkarya Anda
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-blue-100">
+          Temukan inspirasi dan kebijaksanaan dalam setiap hadist pilihan
+        </p>
+        <button
+          class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300"
+        >
+          Mulai Jelajahi
+        </button>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="text-center p-6">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-book-open text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Koleksi Hadist</h3>
+            <p class="text-gray-600">
+              Ribuan hadist shahih dari berbagai kitab terpercaya
+            </p>
+          </div>
+          <div class="text-center p-6">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-search text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Pencarian Mudah</h3>
+            <p class="text-gray-600">
+              Cari hadist berdasarkan tema, kata kunci, atau perawi
+            </p>
+          </div>
+          <div class="text-center p-6">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-heart text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Favorit Personal</h3>
+            <p class="text-gray-600">
+              Simpan hadist favorit untuk dibaca kembali
+            </p>
+          </div>
+          <div class="text-center p-6">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-share-alt text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Bagikan Inspirasi</h3>
+            <p class="text-gray-600">
+              Bagikan hadist inspiratif ke media sosial
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hadist Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Menjelajahi Hidup Anda Lebih Indah
+          </h2>
+          <div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+          <div class="text-center">
+            <div
+              class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center"
+            >
+              <i class="fas fa-quote-right text-gray-400 text-4xl"></i>
+            </div>
+            <p class="text-gray-600 text-lg italic mb-4">
+              "Barangsiapa yang beriman kepada Allah dan hari akhir, hendaklah
+              ia berkata yang baik atau diam."
+            </p>
+            <p class="text-blue-600 font-semibold">- HR. Bukhari dan Muslim</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
+          Indeks Pilihan Kami
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div
+            class="bg-gray-100 rounded-lg p-6 h-64 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-4xl"></i>
+          </div>
+          <div
+            class="bg-gray-100 rounded-lg p-6 h-64 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-4xl"></i>
+          </div>
+          <div
+            class="bg-gray-100 rounded-lg p-6 h-64 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-4xl"></i>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button
+            class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            Lihat Semua Koleksi
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
+          Galeri Lewat Irama Kami
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div
+            class="bg-gray-200 rounded-lg h-48 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-3xl"></i>
+          </div>
+          <div
+            class="bg-gray-200 rounded-lg h-48 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-3xl"></i>
+          </div>
+          <div
+            class="bg-gray-200 rounded-lg h-48 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-3xl"></i>
+          </div>
+          <div
+            class="bg-gray-200 rounded-lg h-48 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-3xl"></i>
+          </div>
+          <div
+            class="bg-gray-200 rounded-lg h-48 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-3xl"></i>
+          </div>
+          <div
+            class="bg-gray-200 rounded-lg h-48 flex items-center justify-center"
+          >
+            <i class="fas fa-image text-gray-400 text-3xl"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
+          Apa Kata Pelanggan Kami
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="space-y-6">
+              <div class="bg-blue-50 p-6 rounded-lg">
+                <p class="text-gray-700 mb-4">
+                  "Platform yang sangat membantu dalam mencari hadist-hadist
+                  inspiratif untuk kehidupan sehari-hari."
+                </p>
+                <p class="font-semibold text-blue-600">- Ahmad Fauzi</p>
+              </div>
+              <div class="bg-blue-50 p-6 rounded-lg">
+                <p class="text-gray-700 mb-4">
+                  "Koleksi hadist yang lengkap dan mudah dipahami. Sangat
+                  berguna untuk pembelajaran."
+                </p>
+                <p class="font-semibold text-blue-600">- Siti Nurhaliza</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-gray-200 rounded-lg h-96 flex items-center justify-center"
+          >
+            <i class="fas fa-users text-gray-400 text-6xl"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
+          Informasi Penting
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="font-semibold text-lg mb-3 text-blue-600">
+                Waktu Sholat Hari Ini
+              </h3>
+              <div class="space-y-2">
+                <div class="flex justify-between">
+                  <span>Subuh</span>
+                  <span class="font-semibold">04:30</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Dzuhur</span>
+                  <span class="font-semibold">12:15</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Ashar</span>
+                  <span class="font-semibold">15:30</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Maghrib</span>
+                  <span class="font-semibold">18:45</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Isya</span>
+                  <span class="font-semibold">20:00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <h3 class="font-semibold text-lg mb-3 text-blue-600">
+                Kegiatan Mendatang
+              </h3>
+              <div class="space-y-3">
+                <div class="border-l-4 border-blue-600 pl-4">
+                  <p class="font-semibold">Kajian Tafsir Al-Qur'an</p>
+                  <p class="text-gray-600 text-sm">Setiap Kamis, 19:30 WIB</p>
+                </div>
+                <div class="border-l-4 border-blue-600 pl-4">
+                  <p class="font-semibold">Belajar Tahfidz Bersama</p>
+                  <p class="text-gray-600 text-sm">Setiap Sabtu, 08:00 WIB</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-200 rounded-lg h-96 flex items-center justify-center"
+          >
+            <i class="fas fa-map-marker-alt text-gray-400 text-6xl"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
+          Hubungi Kami
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-xl font-semibold mb-6 text-blue-600">
+              Informasi Kontak
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <i class="fas fa-map-marker-alt text-blue-600 w-6"></i>
+                <span class="ml-3">Jl. Masjid Agung No. 123, Surabaya</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-phone text-blue-600 w-6"></i>
+                <span class="ml-3">(031) 123-4567</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-envelope text-blue-600 w-6"></i>
+                <span class="ml-3">info@islamiccenter.com</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-clock text-blue-600 w-6"></i>
+                <span class="ml-3">Buka 24 Jam</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-200 rounded-lg h-64 flex items-center justify-center"
+          >
+            <i class="fas fa-map text-gray-400 text-4xl"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <div class="flex items-center mb-4">
+              <i class="fas fa-mosque text-2xl"></i>
+              <span class="ml-2 text-xl font-bold">Islamic Center</span>
+            </div>
+            <p class="text-blue-200">
+              Tempat berbagi inspirasi dan kebijaksanaan melalui hadist-hadist
+              pilihan yang autentik.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Link Cepat</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white">Beranda</a>
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white"
+                  >Tentang Kami</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white"
+                  >Koleksi Hadist</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-200 hover:text-white">Kontak</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Media Sosial</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-200 hover:text-white text-2xl">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="#" class="text-blue-200 hover:text-white text-2xl">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-blue-200 hover:text-white text-2xl">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-blue-200 hover:text-white text-2xl">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-blue-800 mt-8 pt-8 text-center">
+          <p class="text-blue-200">
+            &copy; 2025 Islamic Center. Semua hak dilindungi.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Chatbot Toggle Button -->
+    <button
+      id="chatToggle"
+      class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 z-50 chat-bubble"
+    >
+      <i class="fas fa-comments text-xl"></i>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div
+      id="chatContainer"
+      class="fixed bottom-6 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl z-40 chat-container"
+    >
+      <div
+        class="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <i class="fas fa-robot mr-2"></i>
+          <span class="font-semibold">AI Assistant</span>
+        </div>
+        <button id="chatClose" class="text-white hover:text-gray-200">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div id="chatMessages" class="h-64 overflow-y-auto p-4 space-y-3">
+        <div class="flex items-start space-x-2 message">
+          <div
+            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0"
+          >
+            <i class="fas fa-robot text-blue-600 text-sm"></i>
+          </div>
+          <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+            <p class="text-sm">
+              Assalamu'alaikum! Saya adalah asisten AI untuk membantu Anda
+              dengan pertanyaan seputar Islam dan hadist. Ada yang bisa saya
+              bantu?
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 border-t">
+        <div class="flex space-x-2">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Ketik pesan Anda..."
+            class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            id="chatSend"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Chatbot functionality
+      const chatToggle = document.getElementById("chatToggle");
+      const chatContainer = document.getElementById("chatContainer");
+      const chatClose = document.getElementById("chatClose");
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+      const chatMessages = document.getElementById("chatMessages");
+
+      // Sample knowledge base (in real implementation, this would be loaded from a file)
+      const knowledgeBase = {
+        hadist: [
+          "Barangsiapa yang beriman kepada Allah dan hari akhir, hendaklah ia berkata yang baik atau diam. (HR. Bukhari dan Muslim)",
+          "Sesungguhnya amal perbuatan itu tergantung pada niatnya. (HR. Bukhari dan Muslim)",
+          "Muslim yang sejati adalah orang yang Muslim lainnya selamat dari gangguan lisan dan tangannya. (HR. Bukhari dan Muslim)",
+          "Barangsiapa yang tidak menyayangi yang kecil dan tidak memuliakan yang besar, maka dia bukan golongan kami. (HR. Abu Dawud dan Tirmidzi)",
+        ],
+        doa: [
+          "Rabbana atina fi'd-dunya hasanatan wa fi'l-akhirati hasanatan wa qina 'adhab an-nar",
+          "Allahumma inna nas'aluka min fadlika wa rahmatika",
+          "Subhanallahi wa bihamdihi subhanallahil 'azhim",
+        ],
+        sholat: {
+          subuh: "04:30",
+          dzuhur: "12:15",
+          ashar: "15:30",
+          maghrib: "18:45",
+          isya: "20:00",
+        },
+      };
+
+      let chatOpen = false;
+
+      chatToggle.addEventListener("click", () => {
+        chatOpen = !chatOpen;
+        if (chatOpen) {
+          chatContainer.classList.add("open");
+          chatToggle.style.display = "none";
+        }
+      });
+
+      chatClose.addEventListener("click", () => {
+        chatOpen = false;
+        chatContainer.classList.remove("open");
+        chatToggle.style.display = "block";
+      });
+
+      function addMessage(message, isUser = false) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `flex items-start space-x-2 message ${
+          isUser ? "justify-end" : ""
+        }`;
+
+        if (isUser) {
+          messageDiv.innerHTML = `
+                    <div class="bg-blue-600 text-white rounded-lg p-3 max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                    <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user text-white text-sm"></i>
+                    </div>
+                `;
+        } else {
+          messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-blue-600 text-sm"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+        }
+
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function showTypingIndicator() {
+        const typingDiv = document.createElement("div");
+        typingDiv.className =
+          "flex items-start space-x-2 message typing-message";
+        typingDiv.innerHTML = `
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-robot text-blue-600 text-sm"></i>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-3">
+                    <p class="text-sm typing-indicator">Sedang mengetik</p>
+                </div>
+            `;
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return typingDiv;
+      }
+
+      function removeTypingIndicator(typingDiv) {
+        if (typingDiv && typingDiv.parentNode) {
+          typingDiv.parentNode.removeChild(typingDiv);
+        }
+      }
+
+      async function getAIResponse(userMessage) {
+        // Simulate API call delay
+        await new Promise((resolve) =>
+          setTimeout(resolve, 1000 + Math.random() * 2000)
+        );
+
+        const message = userMessage.toLowerCase();
+
+        // Simple keyword-based responses using local knowledge base
+        if (message.includes("hadist") || message.includes("hadis")) {
+          const randomHadist =
+            knowledgeBase.hadist[
+              Math.floor(Math.random() * knowledgeBase.hadist.length)
+            ];
+          return `Berikut hadist untuk Anda: "${randomHadist}"`;
+        }
+
+        if (message.includes("doa")) {
+          const randomDoa =
+            knowledgeBase.doa[
+              Math.floor(Math.random() * knowledgeBase.doa.length)
+            ];
+          return `Berikut doa untuk Anda: "${randomDoa}"`;
+        }
+
+        if (message.includes("sholat") || message.includes("waktu")) {
+          return `Jadwal sholat hari ini:\n• Subuh: ${knowledgeBase.sholat.subuh}\n• Dzuhur: ${knowledgeBase.sholat.dzuhur}\n• Ashar: ${knowledgeBase.sholat.ashar}\n• Maghrib: ${knowledgeBase.sholat.maghrib}\n• Isya: ${knowledgeBase.sholat.isya}`;
+        }
+
+        if (message.includes("assalamu") || message.includes("salam")) {
+          return "Wa'alaikumussalam warahmatullahi wabarakatuh. Ada yang bisa saya bantu?";
+        }
+
+        if (message.includes("terima kasih") || message.includes("syukur")) {
+          return "Sama-sama! Semoga bermanfaat. Barakallahu fiikum.";
+        }
+
+        // Default response
+        return "Maaf, saya belum memahami pertanyaan Anda. Silakan tanyakan tentang hadist, doa, jadwal sholat, atau topik islami lainnya. Saya akan berusaha membantu Anda.";
+      }
+
+      async function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        // Add user message
+        addMessage(message, true);
+        chatInput.value = "";
+
+        // Show typing indicator
+        const typingDiv = showTypingIndicator();
+
+        try {
+          // Get AI response
+          const response = await getAIResponse(message);
+
+          // Remove typing indicator and add AI response
+          removeTypingIndicator(typingDiv);
+          addMessage(response);
+        } catch (error) {
+          removeTypingIndicator(typingDiv);
+          addMessage("Maaf, terjadi kesalahan. Silakan coba lagi.");
+        }
+      }
+
+      chatSend.addEventListener("click", sendMessage);
+
+      chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
+      });
+
+      // Alternative implementation using Gemini API (uncomment and configure)
+      /*
+        async function getGeminiResponse(userMessage) {
+            const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY_HERE'; // Replace with your actual API key
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+            
+            // Load context from local file (you would need to implement file loading)
+            const context = `
+            Anda adalah asisten AI untuk website Islamic Center yang membantu menjawab pertanyaan seputar Islam, hadist, doa, dan ibadah.
+            Gunakan bahasa Indonesia yang sopan dan islami.
+            Berikan jawaban yang bermanfaat dan sesuai dengan ajaran Islam.
+            
+            Pengetahuan dasar:
+            ${JSON.stringify(knowledgeBase, null, 2)}
+            `;
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: context + "\n\nPertanyaan user: " + userMessage
+                            }]
+                        }]
+                    })
+                });
+                
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                throw error;
+            }
+        }
+        */
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Add scroll effect to navigation
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector("nav");
+        if (window.scrollY > 50) {
+          navbar.classList.add("bg-white", "shadow-lg");
+        } else {
+          navbar.classList.remove("shadow-lg");
+        }
+      });
+
+      // Add animation on scroll for sections
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections for animation
+      document.querySelectorAll("section").forEach((section) => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
