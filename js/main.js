@@ -128,96 +128,38 @@ const Testimonials = {
     const swiperWrapper = document.getElementById("testimoniSwiper");
     if (!swiperWrapper) return;
 
-    const slides = [];
-
-    // Desktop slides: 2 testimoni per slide (hanya tampil di lg+)
-    for (let i = 0; i < data.testimonials.length; i += 2) {
-      const testimonial1 = data.testimonials[i];
-      const testimonial2 = data.testimonials[i + 1];
-
-      slides.push(`
-        <div class="swiper-slide hidden lg:block">
-          <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-2 gap-8">
-              <!-- Testimonial 1 -->
-              <div class="p-8">
-                <div class="flex flex-col items-center text-center space-y-6">
-                  <div class="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <i class="fas fa-user text-2xl text-primary"></i>
-                  </div>
-                  <figcaption class="font-semibold font-heading text-gray-900 dark:text-white text-xl">
-                    ${testimonial1.name}
-                  </figcaption>
-                  <blockquote class="text-base xl:text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-                    <p>"${testimonial1.message}"</p>
-                  </blockquote>
-                  
-                </div>
+    // Hanya render 1 testimoni per slide (Swiper akan handle responsive)
+    const slides = data.testimonials.map((testimonial) => `
+      <div class="swiper-slide">
+        <div class="max-w-md mx-auto px-4">
+          <div class="p-6">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-user text-lg text-primary"></i>
               </div>
-              
-              <!-- Testimonial 2 atau placeholder -->
-              ${
-                testimonial2
-                  ? `
-              <div class="p-8">
-                <div class="flex flex-col items-center text-center space-y-6">
-                  <div class="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <i class="fas fa-user text-2xl text-primary"></i>
-                  </div>
-                  <figcaption class="font-semibold font-heading text-gray-900 dark:text-white text-xl">
-                    ${testimonial2.name}
-                  </figcaption>
-                  <blockquote class="text-base xl:text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-                    <p>"${testimonial2.message}"</p>
-                  </blockquote> 
-                </div>
-              </div>
-              `
-                  : `
-              <div></div>
-              `
-              }
+              <blockquote class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                <p>"${testimonial.message}"</p>
+              </blockquote>
+              <figcaption class="font-semibold text-gray-900 dark:text-white text-base">
+                ${testimonial.name}
+              </figcaption>
             </div>
           </div>
         </div>
-      `);
-    }
-
-    // Mobile slides: 1 testimoni per slide (hanya tampil di mobile)
-    data.testimonials.forEach((testimonial) => {
-      slides.push(`
-        <div class="swiper-slide block lg:hidden">
-          <div class="max-w-md mx-auto px-4">
-            <div class="p-6">
-              <div class="flex flex-col items-center text-center space-y-4">
-                <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <i class="fas fa-user text-lg text-primary"></i>
-                </div>
-                <blockquote class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-                  <p>"${testimonial.message}"</p>
-                </blockquote>
-                <figcaption class="font-semibold text-gray-900 dark:text-white text-base">
-                  ${testimonial.name}
-                </figcaption>
-              </div>
-            </div>
-          </div>
-        </div>
-      `);
-    });
+      </div>
+    `);
 
     swiperWrapper.innerHTML = slides.join("");
 
-    // Initialize Swiper with responsive settings
+    // Inisialisasi Swiper
     new Swiper(".testimoni-swiper", {
       loop: true,
       autoplay: {
-        delay: 5000,
+        delay: 2500,
         disableOnInteraction: false,
       },
       slidesPerView: 1,
-      spaceBetween: 20,
-      centeredSlides: true,
+      spaceBetween: 30,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -228,19 +170,12 @@ const Testimonials = {
         prevEl: ".swiper-button-prev",
       },
       breakpoints: {
-        640: {
-          spaceBetween: 30,
-        },
-        768: {
+        1024: {
+          slidesPerView: 2,
           spaceBetween: 40,
         },
-        1024: {
-          spaceBetween: 50,
-        },
       },
-      // Better touch and grab cursor
       grabCursor: true,
-      // Smooth transitions
       speed: 600,
       effect: "slide",
     });
@@ -386,7 +321,8 @@ const Footer = {
                     </div>
                 </div>
                 
-                <div class="mt-10 border-t border-white/20 dark:border-gray-600 pt-6">
+                <div class="mt-10 border-t border-white/20 dark:border-gray-600 pt-6 flex flex-col items-center">
+                    <img src="assets/images/logo-itsday.png" alt="GG ITs day Logo" class="h-26 w-32"/>
                     <p class="text-center text-sm text-blue-100/80 dark:text-gray-300">
                         © ${new Date().getFullYear()} GG Florist. Semua hak dilindungi.
                     </p>

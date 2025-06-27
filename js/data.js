@@ -140,7 +140,7 @@ const data = {
     ],
     socials: {
       whatsapp: "https://wa.me/6282327044636",
-      instagram: "#",
+      instagram: "https://www.instagram.com/ggflorist_smg",
       tiktok: "#",
     },
   },
