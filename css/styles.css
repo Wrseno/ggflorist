@@ -1,0 +1,343 @@
+/* CSS Variables */
+:root {
+  --color-primary: #6f96d1;
+  --color-primary-light: #dbeafe;
+  --color-primary-hover: #547bb6;
+  --color-secondary: #edf6ff;
+  --color-accent: #6f96d1;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.message {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.typing-indicator::after {
+  content: "...";
+  animation: typing 1.5s infinite;
+}
+
+@keyframes typing {
+  0%,
+  20% {
+    content: ".";
+  }
+
+  40% {
+    content: "..";
+  }
+
+  60%,
+  100% {
+    content: "...";
+  }
+}
+
+/* Global Transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Font Configuration */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem; /* px-6 py-2.5 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm */
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* hover:shadow-md */
+}
+
+/* Nav Link Underline Effect */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; /* h-0.5 */
+  background-color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #1f2937
+  ); /* bg-gradient-to-b from-transparent to-gray-800 */
+}
+
+.dark .hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #111827
+  ); /* to-gray-900 */
+}
+
+.hero-background {
+  background-attachment: fixed;
+  filter: brightness(0.75) contrast(1.1);
+  opacity: 0.85;
+}
+
+.dark .hero-background {
+  filter: brightness(0.6) contrast(1.2);
+  opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+  .hero-background {
+    background-attachment: scroll;
+  }
+}
+
+/* Swiper Navigation */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-primary);
+  width: 44px; /* w-11 */
+  height: 44px; /* h-11 */
+  border-radius: 50%; /* rounded-full */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 700; /* font-bold */
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--color-primary);
+  opacity: 0.3;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.testimoni-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.testimoni-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 2rem;
+}
+
+/* Testimonial card styles - clean design without borders/shadows */
+.testimoni-swiper .swiper-slide > div > div > div {
+  border: none !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease;
+}
+
+/* Remove any figure styling that might add borders */
+.testimoni-swiper figure {
+  border: none !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease;
+}
+
+/* Override any potential border/shadow from Tailwind classes */
+.testimoni-swiper [class*="bg-white"],
+.testimoni-swiper [class*="dark:bg-gray-800"],
+.testimoni-swiper .bg-white,
+.testimoni-swiper .dark\:bg-gray-800 {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Ensure testimoni section has no global shadows */
+#testimoni-section *,
+.testimoni-swiper * {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Keep only the background and padding for testimoni cards */
+.testimoni-swiper .bg-white {
+  background-color: white;
+}
+
+.dark .testimoni-swiper .dark\:bg-gray-800 {
+  background-color: #1f2937;
+}
+
+/* Mobile responsive navigation */
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 0.875rem;
+  }
+
+  .testimoni-swiper {
+    padding: 0.5rem 0 2rem 0;
+  }
+}
+
+/* Fade-in Animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(1.25rem); /* translate-y-5 */
+  transition: all 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark Mode Border Fix */
+.dark .border-black {
+  border-color: #ffffff; /* border-white */
+}
+
+/* Custom Order Section Enhancements */
+#custom-order input:focus,
+#custom-order textarea:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(111, 150, 209, 0.15);
+}
+
+#custom-order input,
+#custom-order textarea {
+  transition: all 0.2s ease;
+}
+
+#custom-order input:hover,
+#custom-order textarea:hover {
+  border-color: #6f96d1;
+}
+
+/* Form validation styling */
+#custom-order input:invalid:not(:placeholder-shown),
+#custom-order textarea:invalid:not(:placeholder-shown) {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+#custom-order input:valid:not(:placeholder-shown),
+#custom-order textarea:valid:not(:placeholder-shown) {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Step indicators animation */
+#custom-order .flex.items-start.gap-4:hover .rounded-full {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+/* Button hover effects */
+#custom-order button[onclick="sendCustomOrder()"] {
+  position: relative;
+  overflow: hidden;
+}
+
+#custom-order button[onclick="sendCustomOrder()"]:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+#custom-order button[onclick="sendCustomOrder()"]:hover:before {
+  left: 100%;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  #custom-order .grid.grid-cols-1.sm\\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  #custom-order .text-3xl.sm\\:text-4xl.lg\\:text-5xl {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+}

@@ -1,0 +1,539 @@
+/**
+ * GG Florist Website Main JavaScript
+ * Handles all website functionality including theme management,
+ * mobile menu, animations, and interactive components
+ */
+
+import data from "./data.js";
+
+// Theme Management Module
+const ThemeManager = {
+  getTheme() {
+    return localStorage.getItem("theme") || "light";
+  },
+
+  saveTheme(theme) {
+    localStorage.setItem("theme", theme);
+  },
+
+  applyTheme(theme) {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+
+    // Update theme icons
+    document
+      .querySelectorAll("#moon-icon, #mobile-moon-icon")
+      .forEach((icon) => icon.classList.toggle("hidden", theme === "dark"));
+    document
+      .querySelectorAll("#sun-icon, #mobile-sun-icon")
+      .forEach((icon) => icon.classList.toggle("hidden", theme === "light"));
+  },
+
+  init() {
+    const theme = this.getTheme();
+    this.applyTheme(theme);
+
+    // Add event listeners for theme toggle buttons
+    document
+      .querySelectorAll("#theme-toggle, #mobile-theme-toggle")
+      .forEach((button) => {
+        button.addEventListener("click", () => {
+          const newTheme = this.getTheme() === "light" ? "dark" : "light";
+          this.saveTheme(newTheme);
+          this.applyTheme(newTheme);
+        });
+      });
+  },
+};
+
+// Mobile Menu Module
+const MobileMenu = {
+  init() {
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (!menuButton || !mobileMenu) return;
+
+    // Toggle mobile menu
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("-translate-y-[150%]");
+      mobileMenu.classList.toggle("translate-y-0");
+    });
+
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("-translate-y-[150%]");
+        mobileMenu.classList.remove("translate-y-0");
+      });
+    });
+  },
+};
+
+// Animation Observer Module
+const AnimationObserver = {
+  init() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document
+      .querySelectorAll(".fade-in-section")
+      .forEach((section) => observer.observe(section));
+  },
+};
+
+// Gallery Module
+const Gallery = {
+  render() {
+    const grid = document.getElementById("galleryGrid");
+    if (!grid) return;
+
+    grid.innerHTML = data.products
+      .map(
+        (item) => `
+        <div class="group relative">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200">
+            <img src="${item.img}" alt="${item.title}" 
+                 class="object-cover w-full h-64 transition-transform duration-300 group-hover:scale-105" 
+                 loading="lazy">
+          </div>
+          <div class="mt-4">
+            <h3 class="text-lg font-semibold">
+              <a href="#">
+                <span aria-hidden="true" class="absolute inset-0"></span>
+                ${item.title}
+              </a>
+            </h3>
+            <p class="mt-1 text-sm text-gray-500">${item.desc}</p>
+            <p class="mt-2 text-base font-medium text-gray-800 dark:text-white">${item.price}</p>
+          </div>
+        </div>
+      `
+      )
+      .join("");
+  },
+};
+
+// Testimonials Module
+const Testimonials = {
+  render() {
+    const swiperWrapper = document.getElementById("testimoniSwiper");
+    if (!swiperWrapper) return;
+
+    const slides = [];
+
+    // Desktop slides: 2 testimoni per slide (hanya tampil di lg+)
+    for (let i = 0; i < data.testimonials.length; i += 2) {
+      const testimonial1 = data.testimonials[i];
+      const testimonial2 = data.testimonials[i + 1];
+
+      slides.push(`
+        <div class="swiper-slide hidden lg:block">
+          <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-2 gap-8">
+              <!-- Testimonial 1 -->
+              <div class="p-8">
+                <div class="flex flex-col items-center text-center space-y-6">
+                  <div class="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
+                    <i class="fas fa-user text-2xl text-primary"></i>
+                  </div>
+                  <figcaption class="font-semibold font-heading text-gray-900 dark:text-white text-xl">
+                    ${testimonial1.name}
+                  </figcaption>
+                  <blockquote class="text-base xl:text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+                    <p>"${testimonial1.message}"</p>
+                  </blockquote>
+                  
+                </div>
+              </div>
+              
+              <!-- Testimonial 2 atau placeholder -->
+              ${
+                testimonial2
+                  ? `
+              <div class="p-8">
+                <div class="flex flex-col items-center text-center space-y-6">
+                  <div class="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
+                    <i class="fas fa-user text-2xl text-primary"></i>
+                  </div>
+                  <figcaption class="font-semibold font-heading text-gray-900 dark:text-white text-xl">
+                    ${testimonial2.name}
+                  </figcaption>
+                  <blockquote class="text-base xl:text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+                    <p>"${testimonial2.message}"</p>
+                  </blockquote> 
+                </div>
+              </div>
+              `
+                  : `
+              <div></div>
+              `
+              }
+            </div>
+          </div>
+        </div>
+      `);
+    }
+
+    // Mobile slides: 1 testimoni per slide (hanya tampil di mobile)
+    data.testimonials.forEach((testimonial) => {
+      slides.push(`
+        <div class="swiper-slide block lg:hidden">
+          <div class="max-w-md mx-auto px-4">
+            <div class="p-6">
+              <div class="flex flex-col items-center text-center space-y-4">
+                <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <i class="fas fa-user text-lg text-primary"></i>
+                </div>
+                <blockquote class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  <p>"${testimonial.message}"</p>
+                </blockquote>
+                <figcaption class="font-semibold text-gray-900 dark:text-white text-base">
+                  ${testimonial.name}
+                </figcaption>
+              </div>
+            </div>
+          </div>
+        </div>
+      `);
+    });
+
+    swiperWrapper.innerHTML = slides.join("");
+
+    // Initialize Swiper with responsive settings
+    new Swiper(".testimoni-swiper", {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      slidesPerView: 1,
+      spaceBetween: 20,
+      centeredSlides: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        640: {
+          spaceBetween: 30,
+        },
+        768: {
+          spaceBetween: 40,
+        },
+        1024: {
+          spaceBetween: 50,
+        },
+      },
+      // Better touch and grab cursor
+      grabCursor: true,
+      // Smooth transitions
+      speed: 600,
+      effect: "slide",
+    });
+  },
+};
+
+// Info Section Module
+const InfoSection = {
+    render() {
+        const infoContainer = document.getElementById("infoSection");
+        if (!infoContainer) return;
+
+        
+        const policyIcons = [
+            "fas fa-clock",      // 1st policy
+            "fas fa-exclamation",// 2nd policy
+            "fas fa-money-bill", // 3rd policy
+            "fas fa-gift",       // 4th policy
+            "fas fa-info-circle" // 5th policy, etc.
+        ];
+
+        infoContainer.innerHTML = `
+            <div class="rounded-2xl bg-white dark:bg-gray-700 p-8 shadow-sm border border-gray-100 dark:border-gray-600 mb-8">
+                <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
+                    Bagaimana Cara Memesan
+                </h3>
+                <div class="space-y-5">
+                    ${data.howToOrderSteps
+                        .map(
+                            (step, index) => `
+                        <div class="flex items-start gap-x-4 rounded-xl bg-slate-50 dark:bg-gray-600 p-4 border border-slate-200 dark:border-gray-500">
+                            <div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-slate-200 dark:bg-gray-500 text-sm font-semibold text-slate-700 dark:text-gray-200">
+                                ${index + 1}
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white">${step.title}</p>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${step.desc}</p>
+                            </div>
+                        </div>
+                    `
+                        )
+                        .join("")}
+                </div>
+            </div>
+            
+            <div class="rounded-2xl bg-white dark:bg-gray-700 p-8 shadow-sm border border-gray-100 dark:border-gray-600">
+                <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
+                    Kebijakan Last Minute Order (LMO)
+                </h3>
+                <div class="space-y-5">
+                    ${data.lmoPolicy
+                        .map(
+                            (policy, index) => `
+                        <div class="flex items-start gap-x-4 rounded-xl bg-slate-50 dark:bg-gray-600 p-4 border border-slate-200 dark:border-gray-500">
+                            <div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-primary/10 dark:bg-blue-900">
+                                <i class="${policyIcons[index] || "fas fa-info-circle"} text-primary text-lg dark:text-blue-300"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white">${policy.title}</p>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${policy.desc}</p>
+                            </div>
+                        </div>
+                    `
+                        )
+                        .join("")}
+                </div>
+            </div>
+        `;
+    },
+};
+
+// Footer Module
+const Footer = {
+    render() {
+        const footer = document.querySelector("footer");
+        if (!footer) return;
+
+        footer.innerHTML = `
+            <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4 text-center md:text-left">
+                    <div class="lg:col-span-2 flex flex-col items-center md:items-start">
+                        <a href="#" class="inline-flex items-center gap-x-3">
+                            <img src="assets/images/logo-ggflorist.png" alt="GG Florist Logo" 
+                                     class="h-10 w-10 object-cover rounded-full">
+                            <span class="text-2xl font-bold text-white dark:text-white font-logo">GG Florist</span>
+                        </a>
+                        <p class="mt-4 text-sm text-blue-100/90 dark:text-gray-200 max-w-xs">
+                            Penyedia rangkaian bunga segar dan hadiah spesial untuk semua momen berharga Anda di Semarang dan sekitarnya.
+                        </p>
+                        <div class="mt-6 flex justify-center md:justify-start gap-x-4">
+                            <a href="${data.contactInfo.socials.whatsapp}" target="_blank" 
+                                 class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
+                                <span class="sr-only">WhatsApp</span>
+                                <i class="fab fa-whatsapp text-2xl"></i>
+                            </a>
+                            <a href="${data.contactInfo.socials.instagram}" target="_blank" 
+                                 class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
+                                <span class="sr-only">Instagram</span>
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </a>
+                            <a href="${data.contactInfo.socials.tiktok}" target="_blank" 
+                                 class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
+                                <span class="sr-only">TikTok</span>
+                                <i class="fab fa-tiktok text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col items-center md:items-start">
+                        <h3 class="text-lg font-semibold text-white dark:text-white">Tautan Cepat</h3>
+                        <ul class="mt-4 space-y-3 text-blue-100/90 dark:text-gray-200">
+                            <li><a href="#home" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Home</a></li>
+                            <li><a href="#about" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Tentang Kami</a></li>
+                            <li><a href="#produk" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Produk</a></li>
+                            <li><a href="#custom-order" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Kustomisasi</a></li>
+                            <li><a href="#galeri" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Galeri</a></li>
+                            <li><a href="#kontak" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Kontak</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex flex-col items-center md:items-start">
+                        <h3 class="text-lg font-semibold text-white dark:text-white">Kontak</h3>
+                        <ul class="mt-4 space-y-4 text-blue-100/90 dark:text-gray-200">
+                            <li class="flex items-center gap-x-3">
+                                <i class="fas fa-phone h-5 w-5 flex-none text-blue-200 dark:text-gray-300"></i>
+                                <a href="tel:${data.contactInfo.phone}" 
+                                     class="hover:text-white dark:hover:text-white transition-colors">
+                                    ${data.contactInfo.phone}
+                                </a>
+                            </li>
+                            <li class="flex items-center gap-x-3">
+                                <i class="fas fa-envelope h-5 w-5 flex-none text-blue-200 dark:text-gray-300"></i>
+                                <a href="mailto:${data.contactInfo.email}" 
+                                     class="hover:text-white dark:hover:text-white transition-colors">
+                                    ${data.contactInfo.email}
+                                </a>
+                            </li>
+                            <li class="flex items-center gap-x-3">
+                                <i class="fas fa-map-marker-alt h-5 w-5 flex-none text-blue-200 dark:text-gray-300"></i>
+                                <span>Semarang, Jawa Tengah</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-10 border-t border-white/20 dark:border-gray-600 pt-6">
+                    <p class="text-center text-sm text-blue-100/80 dark:text-gray-300">
+                        © ${new Date().getFullYear()} GG Florist. Semua hak dilindungi.
+                    </p>
+                </div>
+            </div>
+        `;
+    },
+};
+
+// Chatbot Module
+const Chatbot = {
+  init() {
+    const chatToggle = document.getElementById("chatToggle");
+    const chatContainer = document.getElementById("chatContainer");
+    const chatClose = document.getElementById("chatClose");
+    const chatInput = document.getElementById("chatInput");
+    const chatSend = document.getElementById("chatSend");
+    const chatMessages = document.getElementById("chatMessages");
+    const kb = data.chatbotKB;
+
+    if (
+      !chatToggle ||
+      !chatContainer ||
+      !chatClose ||
+      !chatInput ||
+      !chatSend ||
+      !chatMessages
+    )
+      return;
+
+    const addMessage = (message, isUser = false) => {
+      const messageDiv = document.createElement("div");
+      messageDiv.className = `flex items-start gap-2.5 animate-fade-in ${
+        isUser ? "justify-end" : ""
+      }`;
+      messageDiv.innerHTML = isUser
+        ? `
+          <div class="bg-primary text-white rounded-xl rounded-br-none p-3 max-w-xs">
+            <p class="text-sm">${message}</p>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-user text-white text-sm"></i>
+          </div>`
+        : `
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 dark:bg-blue-900">
+            <i class="fas fa-robot text-primary text-sm dark:text-blue-300"></i>
+          </div>
+          <div class="bg-gray-100 dark:bg-gray-700 rounded-xl rounded-bl-none p-3 max-w-xs">
+            <p class="text-sm text-gray-800 dark:text-gray-200">${message}</p>
+          </div>`;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const getAIResponse = (userMessage) => {
+      const message = userMessage.toLowerCase().trim();
+
+      for (const key in kb.responses) {
+        if (key !== "default" && key !== "welcome" && key !== "thanks") {
+          const keywords = kb[key] || [];
+          if (keywords.some((k) => message.includes(k))) {
+            return kb.responses[key];
+          }
+        }
+      }
+
+      if (kb.thanks.some((k) => message.includes(k)))
+        return kb.responses.thanks;
+      if (kb.greetings.some((k) => message.includes(k)))
+        return kb.responses.welcome;
+
+      return kb.responses.default;
+    };
+
+    const handleSendMessage = async () => {
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      addMessage(message, true);
+      chatInput.value = "";
+
+      setTimeout(() => addMessage(getAIResponse(message)), 1000);
+    };
+
+    // Event listeners
+    chatToggle.addEventListener("click", () => {
+      chatContainer.classList.remove("translate-y-full", "opacity-0");
+      chatToggle.classList.add("scale-0");
+    });
+
+    chatClose.addEventListener("click", () => {
+      chatContainer.classList.add("translate-y-full", "opacity-0");
+      chatToggle.classList.remove("scale-0");
+    });
+
+    chatSend.addEventListener("click", handleSendMessage);
+    chatInput.addEventListener(
+      "keypress",
+      (e) => e.key === "Enter" && handleSendMessage()
+    );
+
+    // Initial welcome message
+    addMessage(kb.responses.welcome);
+  },
+};
+
+// Custom Order Module
+const CustomOrder = {
+  send() {
+    const nama = document.getElementById("nama").value;
+    const telepon = document.getElementById("telepon").value;
+    const konsep = document.getElementById("konsep").value;
+    const anggaran = document.getElementById("anggaran").value;
+
+    if (!nama || !telepon || !konsep) {
+      alert("Mohon isi nama, nomor telepon, dan konsep buket Anda.");
+      return;
+    }
+
+    const message = `Halo GG Florist, saya ingin membuat pesanan kustom:\n\nNama: ${nama}\nNomor Telepon: ${telepon}\nKonsep Buket: ${konsep}\nAnggaran: ${
+      anggaran ? "Rp " + anggaran : "Tidak disebutkan"
+    }`;
+    const whatsappUrl = `https://wa.me/6282327044636?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  },
+};
+
+// Application Initialization
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    // Initialize all modules
+    ThemeManager.init();
+    MobileMenu.init();
+    AnimationObserver.init();
+    Gallery.render();
+    Testimonials.render();
+    InfoSection.render();
+    Footer.render();
+    Chatbot.init();
+
+    // Make custom order function globally available
+    window.sendCustomOrder = CustomOrder.send;
+
+    console.log("GG Florist website initialized successfully!");
+  } catch (error) {
+    console.error("Error initializing website:", error);
+  }
+});
