@@ -79,7 +79,7 @@ const AnimationObserver = {
           }
         });
       },
-      { threshold: 0.1 }
+      {threshold: 0.1}
     );
 
     document
@@ -525,12 +525,12 @@ const Chatbot = {
 
       try {
         const requestBody = {
-          contents: [{ parts: [{ text: fullPrompt }] }],
+          contents: [{parts: [{text: fullPrompt}]}],
         };
 
         const response = await fetch(API_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {"Content-Type": "application/json"},
           body: JSON.stringify(requestBody),
         });
 
@@ -630,8 +630,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Make functions globally available
     window.sendCustomOrder = CustomOrder.send;
     window.Gallery = Gallery; // Make Gallery object globally available
-
-    console.log("GG Florist website initialized successfully!");
   } catch (error) {
     console.error("Error initializing website:", error);
   }
