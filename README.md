@@ -2,7 +2,7 @@
 
 Sebuah landing page yang elegan dan cepat untuk **GG Florist**, dirancang untuk memberikan pengalaman terbaik bagi pelanggan dalam menemukan buket impian mereka, didukung oleh asisten AI yang ramah.
 
-(![image](![GG Florist - Hadiah Indah untuk Momen Berharga Anda](https://github.com/user-attachments/assets/513b3ef2-3765-4c2a-82d7-8629e2557ef6))
+(![GG Florist - Hadiah Indah untuk Momen Berharga Anda](https://github.com/user-attachments/assets/513b3ef2-3765-4c2a-82d7-8629e2557ef6)
 
 ---
 
