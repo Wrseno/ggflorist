@@ -5,6 +5,16 @@
   --color-primary-hover: #547bb6;
   --color-secondary: #edf6ff;
   --color-accent: #6f96d1;
+  --header-space-height: 30px;
+}
+
+html {
+  scroll-padding-top: var(--header-space-height-height);
+}
+
+/* Section Scroll Targets - Add offset to prevent header overlap */
+section[id] {
+  scroll-margin-top: var(--header-space-height);
 }
 
 @keyframes bounce {
