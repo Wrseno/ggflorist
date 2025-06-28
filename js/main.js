@@ -90,19 +90,17 @@ const AnimationObserver = {
 
 // Gallery Module
 const Gallery = {
-  currentFilter: "fresh", // Default to fresh instead of all
+  currentFilter: "fresh",
 
   renderCategoryButtons() {
     const productSection = document.getElementById("produk");
     if (!productSection) return;
 
-    // Find the category buttons container or create it
     let categoryContainer = document.getElementById("categoryButtons");
     if (!categoryContainer) {
       categoryContainer = document.createElement("div");
       categoryContainer.id = "categoryButtons";
       categoryContainer.className =
-        // Responsive: horizontal scroll on small screens, flex center on large
         "overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 flex gap-2 sm:gap-0 sm:justify-center border-b border-gray-200 dark:border-gray-600 mb-12 mt-8";
 
       // Insert after the header section
@@ -136,10 +134,9 @@ const Gallery = {
 
   filterProducts(categoryId) {
     this.currentFilter = categoryId;
-    this.renderCategoryButtons(); // Update button states
+    this.renderCategoryButtons();
     this.renderProducts();
 
-    // Add smooth scroll animation
     const grid = document.getElementById("galleryGrid");
     if (grid) {
       grid.style.opacity = "0";
@@ -289,66 +286,86 @@ const InfoSection = {
 
     const policyIcons = [
       "fas fa-clock",
-      "fas fa-exclamation",
-      "fas fa-money-bill",
+      "fas fa-exclamation-triangle",
+      "fas fa-money-bill-wave",
       "fas fa-gift",
       "fas fa-info-circle",
     ];
 
     infoContainer.innerHTML = `
-            <div class="rounded-2xl bg-white dark:bg-gray-700 p-8 shadow-sm border border-gray-100 dark:border-gray-600 mb-8">
-                <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
-                    Bagaimana Cara Memesan
-                </h3>
-                <div class="space-y-5">
-                    ${data.howToOrderSteps
-                      .map(
-                        (step, index) => `
-                        <div class="flex items-start gap-x-4 rounded-xl bg-slate-50 dark:bg-gray-600 p-4 border border-slate-200 dark:border-gray-500">
-                            <div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-slate-200 dark:bg-gray-500 text-sm font-semibold text-slate-700 dark:text-gray-200">
-                                ${index + 1}
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900 dark:text-white">${
-                                  step.title
-                                }</p>
-                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${
-                                  step.desc
-                                }</p>
-                            </div>
+            <div class="lg:col-span-1">
+                <div class="rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-lg border border-gray-100 dark:border-gray-700 h-full">
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
+                            <i class="fas fa-shopping-cart text-2xl text-primary"></i>
                         </div>
-                    `
-                      )
-                      .join("")}
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+                            Bagaimana Cara Memesan
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                            Langkah mudah untuk memesan buket impian Anda
+                        </p>
+                    </div>
+                    <div class="space-y-6">
+                        ${data.howToOrderSteps
+                          .map(
+                            (step, index) => `
+                            <div class="flex items-start gap-x-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 hover:shadow-md transition-all duration-300">
+                                <div class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-primary text-white text-sm font-bold">
+                                    ${index + 1}
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">
+                                        ${step.title}
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                        ${step.desc}
+                                    </p>
+                                </div>
+                            </div>
+                        `
+                          )
+                          .join("")}
+                    </div>
                 </div>
             </div>
             
-            <div class="rounded-2xl bg-white dark:bg-gray-700 p-8 shadow-sm border border-gray-100 dark:border-gray-600">
-                <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
-                    Kebijakan Last Minute Order (LMO)
-                </h3>
-                <div class="space-y-5">
-                    ${data.lmoPolicy
-                      .map(
-                        (policy, index) => `
-                        <div class="flex items-start gap-x-4 rounded-xl bg-slate-50 dark:bg-gray-600 p-4 border border-slate-200 dark:border-gray-500">
-                            <div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-primary/10 dark:bg-blue-900">
-                                <i class="${
-                                  policyIcons[index] || "fas fa-info-circle"
-                                } text-primary text-lg dark:text-blue-300"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900 dark:text-white">${
-                                  policy.title
-                                }</p>
-                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${
-                                  policy.desc
-                                }</p>
-                            </div>
+            <div class="lg:col-span-1">
+                <div class="rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-lg border border-gray-100 dark:border-gray-700 h-full">
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
+                            <i class="fas fa-exclamation-triangle text-2xl text-primary"></i>
                         </div>
-                    `
-                      )
-                      .join("")}
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+                            Kebijakan Last Minute Order
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                            Informasi penting untuk pemesanan mendadak
+                        </p>
+                    </div>
+                    <div class="space-y-6">
+                        ${data.lmoPolicy
+                          .map(
+                            (policy, index) => `
+                            <div class="flex items-start gap-x-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 hover:shadow-md transition-all duration-300">
+                                <div class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-primary dark:bg-primary">
+                                    <i class="${
+                                      policyIcons[index] || "fas fa-info-circle"
+                                    } text-white dark:text-white text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">
+                                        ${policy.title}
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                        ${policy.desc}
+                                    </p>
+                                </div>
+                            </div>
+                        `
+                          )
+                          .join("")}
+                    </div>
                 </div>
             </div>
         `;
