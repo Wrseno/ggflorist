@@ -469,10 +469,8 @@ const Chatbot = {
       (e) => e.key === "Enter" && handleSendMessage()
     );
 
-    addMessage("Halo! Ada yang bisa saya bantu?", false);
-
     addMessage(
-      "Halo! Selamat datang di Toko Buket Happy. Ada yang bisa saya bantu?",
+      "Halo! Selamat datang di Toko GGFlorist. Ada yang bisa saya bantu?",
       false
     );
   },
