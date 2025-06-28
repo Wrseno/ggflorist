@@ -1,718 +1,1080 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="GG Florist menyediakan bunga segar dan desain menawan untuk momen spesial Anda di Semarang."
+    />
+    <title>GG Florist - Hadiah Indah untuk Momen Berharga Anda</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="GG Florist menyediakan bunga segar dan desain menawan untuk momen spesial Anda di Semarang." />
-  <title>GG Florist - Hadiah Indah untuk Momen Berharga Anda</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cardo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cardo:wght@400;700&display=swap"
-    rel="stylesheet" />
+    <!-- Styles -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Styles -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-  <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
-
-  <!-- Scripts (Deferred for Performance) -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
-  <script type="module" src="js/main.js" defer></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              DEFAULT: "#6F96D1",
-              light: "#dbeafe",
-              hover: "#547bb6",
+    <!-- Scripts (Deferred for Performance) -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <script type="module" src="js/main.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js" defer></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "#6F96D1",
+                light: "#dbeafe",
+                hover: "#547bb6",
+              },
+              secondary: "#edf6ff",
+              accent: "#6F96D1",
+              "light-blue": "#EDF6FF",
             },
-            secondary: "#edf6ff",
-            accent: "#6F96D1",
-            "light-blue": "#EDF6FF",
-          },
-          fontFamily: {
-            body: ["Plus Jakarta Sans", "sans-serif"],
-            heading: ["Playfair Display", "serif"],
-            logo: ["Cardo", "serif"],
+            fontFamily: {
+              body: ["Plus Jakarta Sans", "sans-serif"],
+              heading: ["Playfair Display", "serif"],
+              logo: ["Cardo", "serif"],
+            },
           },
         },
-      },
-    };
-  </script>
-</head>
+      };
+    </script>
+  </head>
 
-<body class="bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 font-body transition-colors duration-300">
-  <header
-    class="bg-white/80 dark:bg-gray-900/90 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-gray-200 dark:border-gray-700">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <a href="#" class="flex items-center gap-3 hover:scale-105 transition-transform duration-300">
-        <img src="assets/images/logo-ggflorist.png" alt="GG Florist Logo"
-          class="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full" />
-        <span class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white font-logo tracking-tight">GG
-          Florist</span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <div class="hidden lg:flex flex-1 items-center space-x-8 justify-center">
-        <a href="#home"
-          class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group">Home</a>
-        <a href="#about"
-          class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group">Tentang
-          Kami</a>
-        <a href="#produk"
-          class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group">Produk</a>
-        <a href="#custom-order"
-          class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group">Kustomisasi</a>
-        <a href="#galeri"
-          class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group">Galeri</a>
-        <a href="#kontak"
-          class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group">Kontak</a>
-      </div>
-
-      <!-- Desktop Actions -->
-      <div class="hidden lg:flex items-center space-x-4">
-        <button id="theme-toggle"
-          class="p-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-all duration-300 border border-gray-200 dark:border-gray-600"
-          title="Toggle Theme" aria-label="Toggle Theme">
-          <svg id="moon-icon" class="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-          </svg>
-          <svg id="sun-icon" class="hidden h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-              clip-rule="evenodd" />
-          </svg>
-        </button>
-        <a href="https://wa.me/6282327044636" target="_blank" class="btn-primary flex items-center gap-2">Hubungi
-          Kami</a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-button"
-        class="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-all duration-300">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </nav>
-
-    <div id="mobile-menu"
-      class="lg:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-700 -translate-y-[150%] transition-transform duration-300 ease-in-out z-50">
-      <div class="flex flex-col items-center space-y-4 py-6 px-6 w-full">
-        <a href="#home"
-          class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300">Home</a>
-        <a href="#produk"
-          class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300">Produk</a>
-        <a href="#custom-order"
-          class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300">Kustomisasi</a>
-        <a href="#galeri"
-          class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300">Galeri</a>
-        <a href="#kontak"
-          class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300">Kontak</a>
-        <button id="mobile-theme-toggle"
-          class="p-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-all duration-300 mt-4 border border-gray-200 dark:border-gray-600"
-          title="Toggle Theme" aria-label="Toggle Theme">
-          <svg id="mobile-moon-icon" class="h-6 w-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-          </svg>
-          <svg id="mobile-sun-icon" class="hidden h-6 w-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-              clip-rule="evenodd" />
-          </svg>
-        </button>
-        <a href="https://wa.me/6282327044636" target="_blank" class="btn-primary mt-4 flex items-center gap-2 w-full justify-center">
-          <i class="fab fa-whatsapp"></i>
-          <span>Hubungi Kami</span>
+  <body
+    class="bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 font-body transition-colors duration-300"
+  >
+    <header
+      class="bg-white/80 dark:bg-gray-900/90 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-gray-200 dark:border-gray-700"
+    >
+      <nav
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#"
+          class="flex items-center gap-3 hover:scale-105 transition-transform duration-300"
+        >
+          <img
+            src="assets/images/logo-ggflorist.png"
+            alt="GG Florist Logo"
+            class="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full"
+          />
+          <span
+            class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white font-logo tracking-tight"
+            >GG Florist</span
+          >
         </a>
-      </div>
-    </div>
-  </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero-section relative min-h-screen flex items-center justify-start fade-in-section">
-      <div class="hero-background absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style="background-image: url('assets/images/hero-background.jpg')"></div>
-      <div class="hero-overlay absolute inset-0 z-10 bg-black/40"></div>
+        <!-- Desktop Navigation -->
+        <div
+          class="hidden lg:flex flex-1 items-center space-x-8 justify-center"
+        >
+          <a
+            href="#home"
+            class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group"
+            >Tentang Kami</a
+          >
+          <a
+            href="#produk"
+            class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group"
+            >Produk</a
+          >
+          <a
+            href="#custom-order"
+            class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group"
+            >Kustomisasi</a
+          >
+          <a
+            href="#galeri"
+            class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group"
+            >Galeri</a
+          >
+          <a
+            href="#kontak"
+            class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm font-medium py-2 px-1 relative group"
+            >Kontak</a
+          >
+        </div>
+
+        <!-- Desktop Actions -->
+        <div class="hidden lg:flex items-center space-x-4">
+          <button
+            id="theme-toggle"
+            class="p-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-all duration-300 border border-gray-200 dark:border-gray-600"
+            title="Toggle Theme"
+            aria-label="Toggle Theme"
+          >
+            <svg
+              id="moon-icon"
+              class="h-5 w-5 text-gray-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              />
+            </svg>
+            <svg
+              id="sun-icon"
+              class="hidden h-5 w-5 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <a
+            href="https://wa.me/6282327044636"
+            target="_blank"
+            class="btn-primary flex items-center gap-2"
+            >Hubungi Kami</a
+          >
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-all duration-300"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </nav>
+
       <div
-        class="hero-content relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left text-white flex items-center min-h-[60vh]">
-        <div class="max-w-3xl pt-24 pb-20 sm:pt-32 sm:pb-32">
-          <h1 class="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight mb-6 text-white">
-            Hadiah Indah untuk<br class="hidden sm:block" />
-            Momen Berharga Anda
-          </h1>
-          <p
-            class="text-base sm:text-base md:text-lg lg:text-lg font-normal font-body leading-relaxed mb-8 sm:mb-10 max-w-2xl text-white/90">
-            Temukan keindahan bunga segar dan desain menawan yang disesuaikan
-            untuk setiap kesempatan spesial Anda, kini hadir di 2 lokasi
-            strategis Semarang.
-          </p>
-            <a href="#produk" class="btn-primary text-base sm:text-lg inline-flex items-center gap-2">
-            Jelajahi Produk
-            <span class="flex items-center justify-center">
-              <i class="fas fa-arrow-right text-base sm:text-lg"></i>
-            </span>
-            </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900 fade-in-section">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-12 text-center sm:grid-cols-2 md:grid-cols-4 lg:gap-16">
-          <div class="flex flex-col items-center">
-            <div class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-              <i class="fas fa-leaf text-3xl text-primary"></i>
-            </div>
-            <h3 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white font-heading">
-              Bunga Segar & Berkualitas
-            </h3>
-            <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
-              Bunga pilihan terbaik, langsung dari kebun untuk kesegaran
-              optimal.
-            </p>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-              <i class="fas fa-palette text-3xl text-primary"></i>
-            </div>
-            <h3 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white font-heading">
-              Desain Unik & Kreatif
-            </h3>
-            <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
-              Rancang buket kustom yang unik, sesuai gaya dan pesan spesial
-              Anda.
-            </p>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-              <i class="fas fa-truck-fast text-3xl text-primary"></i>
-            </div>
-            <h3 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white font-heading">
-              Pengiriman Cepat & Aman
-            </h3>
-            <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
-              Pengiriman cepat di seluruh Semarang, bunga tiba dalam kondisi
-              prima.
-            </p>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-              <i class="fas fa-comments-dollar text-3xl text-primary"></i>
-            </div>
-            <h3 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white font-heading">
-              Konsultasi Gratis
-            </h3>
-            <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
-              Tim kami siap membantu Anda memilih bunga yang paling sempurna.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 sm:py-20 lg:py-24 bg-light-blue dark:bg-gray-800 fade-in-section">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div class="order-last lg:order-first">
-            <div
-              class="relative w-full h-[500px] lg:h-[600px] rounded-t-full rounded-b-lg border-2 border-black dark:border-white p-4 bg-transparent">
-              <div class="w-full h-full rounded-t-full rounded-b-lg overflow-hidden">
-                <img src="https://www.pocoposy.com.au/wp-content/uploads/1990/01/super-deluxe-pink-posy.jpg-scaled.jpg"
-                  alt="Buket bunga pink yang indah" class="w-full h-full object-cover" loading="lazy" />
-              </div>
-            </div>
-          </div>
-          <div class="text-center lg:text-left">
-            <p class="text-lg font-semibold mb-2 text-primary tracking-wide">
-              Tentang Kami
-            </p>
-            <h2
-              class="text-4xl sm:text-5xl font-bold font-heading mb-8 text-gray-800 dark:text-white leading-tight tracking-tight">
-              Menjadikan Hidup Anda Lebih Indah
-            </h2>
-            <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              GG Florist telah menjadi bagian dari Kota Semarang selama 6 tahun. Kami bangga dengan reputasi kami dalam
-              menyediakan bunga dan tanaman segar berkualitas tinggi. Perjalanan kami dimulai dengan visi untuk membawa
-              kebahagiaan dan keindahan ke dalam kehidupan banyak orang. Kami percaya bahwa bunga dan tanaman memiliki
-              kekuatan untuk mencerahkan hari siapa pun dan membuatnya lebih istimewa.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="produk" class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900 fade-in-section">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-          <div class="text-center sm:text-left">
-            <p class="text-base font-semibold mb-2 text-primary tracking-wide">
-              Produk
-            </p>
-            <h2
-              class="text-3xl sm:text-4xl font-bold font-heading text-gray-800 dark:text-white leading-tight tracking-tight">
-              Buket Pilihan Kami
-            </h2>
-          </div>
-          <a href="#"
-            class="btn-primary text-sm px-6 py-2 rounded-lg shadow hover:scale-105 transition-transform duration-200 hidden sm:inline-flex items-center justify-center">
-            Lihat Semua Produk
+        id="mobile-menu"
+        class="lg:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-700 -translate-y-[150%] transition-transform duration-300 ease-in-out z-50"
+      >
+        <div class="flex flex-col items-center space-y-4 py-6 px-6 w-full">
+          <a
+            href="#home"
+            class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300"
+            >Home</a
+          >
+          <a
+            href="#produk"
+            class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300"
+            >Produk</a
+          >
+          <a
+            href="#custom-order"
+            class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300"
+            >Kustomisasi</a
+          >
+          <a
+            href="#galeri"
+            class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300"
+            >Galeri</a
+          >
+          <a
+            href="#kontak"
+            class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary font-medium text-lg transition-colors duration-300"
+            >Kontak</a
+          >
+          <button
+            id="mobile-theme-toggle"
+            class="p-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-all duration-300 mt-4 border border-gray-200 dark:border-gray-600"
+            title="Toggle Theme"
+            aria-label="Toggle Theme"
+          >
+            <svg
+              id="mobile-moon-icon"
+              class="h-6 w-6 text-gray-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              />
+            </svg>
+            <svg
+              id="mobile-sun-icon"
+              class="hidden h-6 w-6 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <a
+            href="https://wa.me/6282327044636"
+            target="_blank"
+            class="btn-primary mt-4 flex items-center gap-2 w-full justify-center"
+          >
+            <i class="fab fa-whatsapp"></i>
+            <span>Hubungi Kami</span>
           </a>
         </div>
-        <div id="galleryGrid"
-          class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 xl:gap-8">
+      </div>
+    </header>
 
-          <div class="mt-8 text-center sm:hidden">
-            <a href="#" class="btn-primary text-sm px-6 py-2 rounded-lg shadow inline-flex items-center justify-center">
+    <main>
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="hero-section relative min-h-screen flex items-center justify-start fade-in-section"
+      >
+        <div
+          class="hero-background absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+          style="background-image: url('assets/images/hero-background.jpg')"
+        ></div>
+        <div class="hero-overlay absolute inset-0 z-10 bg-black/40"></div>
+        <div
+          class="hero-content relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left text-white flex items-center min-h-[60vh]"
+        >
+          <div class="max-w-3xl pt-24 pb-20 sm:pt-32 sm:pb-32">
+            <h1
+              class="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight mb-6 text-white"
+            >
+              Hadiah Indah untuk<br class="hidden sm:block" />
+              Momen Berharga Anda
+            </h1>
+            <p
+              class="text-base sm:text-base md:text-lg lg:text-lg font-normal font-body leading-relaxed mb-8 sm:mb-10 max-w-2xl text-white/90"
+            >
+              Temukan keindahan bunga segar dan desain menawan yang disesuaikan
+              untuk setiap kesempatan spesial Anda, kini hadir di 2 lokasi
+              strategis Semarang.
+            </p>
+            <a
+              href="#produk"
+              class="btn-primary text-base sm:text-lg inline-flex items-center gap-2"
+            >
+              Jelajahi Produk
+              <span class="flex items-center justify-center">
+                <i class="fas fa-arrow-right text-base sm:text-lg"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section
+        class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900 fade-in-section"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 gap-12 text-center sm:grid-cols-2 md:grid-cols-4 lg:gap-16"
+          >
+            <div class="flex flex-col items-center">
+              <div
+                class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-primary/10"
+              >
+                <i class="fas fa-leaf text-3xl text-primary"></i>
+              </div>
+              <h3
+                class="mt-6 text-xl font-semibold text-gray-800 dark:text-white font-heading"
+              >
+                Bunga Segar & Berkualitas
+              </h3>
+              <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
+                Bunga pilihan terbaik, langsung dari kebun untuk kesegaran
+                optimal.
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-primary/10"
+              >
+                <i class="fas fa-palette text-3xl text-primary"></i>
+              </div>
+              <h3
+                class="mt-6 text-xl font-semibold text-gray-800 dark:text-white font-heading"
+              >
+                Desain Unik & Kreatif
+              </h3>
+              <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
+                Rancang buket kustom yang unik, sesuai gaya dan pesan spesial
+                Anda.
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-primary/10"
+              >
+                <i class="fas fa-truck-fast text-3xl text-primary"></i>
+              </div>
+              <h3
+                class="mt-6 text-xl font-semibold text-gray-800 dark:text-white font-heading"
+              >
+                Pengiriman Cepat & Aman
+              </h3>
+              <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
+                Pengiriman cepat di seluruh Semarang, bunga tiba dalam kondisi
+                prima.
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-primary/10"
+              >
+                <i class="fas fa-comments-dollar text-3xl text-primary"></i>
+              </div>
+              <h3
+                class="mt-6 text-xl font-semibold text-gray-800 dark:text-white font-heading"
+              >
+                Konsultasi Gratis
+              </h3>
+              <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
+                Tim kami siap membantu Anda memilih bunga yang paling sempurna.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section
+        id="about"
+        class="py-16 sm:py-20 lg:py-24 bg-light-blue dark:bg-gray-800 fade-in-section"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20"
+          >
+            <div class="order-last lg:order-first">
+              <div
+                class="relative w-full h-[500px] lg:h-[600px] rounded-t-full rounded-b-lg border-2 border-black dark:border-white p-4 bg-transparent"
+              >
+                <div
+                  class="w-full h-full rounded-t-full rounded-b-lg overflow-hidden"
+                >
+                  <img
+                    src="https://www.pocoposy.com.au/wp-content/uploads/1990/01/super-deluxe-pink-posy.jpg-scaled.jpg"
+                    alt="Buket bunga pink yang indah"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="text-center lg:text-left">
+              <p class="text-lg font-semibold mb-2 text-primary tracking-wide">
+                Tentang Kami
+              </p>
+              <h2
+                class="text-4xl sm:text-5xl font-bold font-heading mb-8 text-gray-800 dark:text-white leading-tight tracking-tight"
+              >
+                Menjadikan Hidup Anda Lebih Indah
+              </h2>
+              <p
+                class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
+              >
+                GG Florist telah menjadi bagian dari Kota Semarang selama 6
+                tahun. Kami bangga dengan reputasi kami dalam menyediakan bunga
+                dan tanaman segar berkualitas tinggi. Perjalanan kami dimulai
+                dengan visi untuk membawa kebahagiaan dan keindahan ke dalam
+                kehidupan banyak orang. Kami percaya bahwa bunga dan tanaman
+                memiliki kekuatan untuk mencerahkan hari siapa pun dan
+                membuatnya lebih istimewa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Section -->
+      <section
+        id="produk"
+        class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900 fade-in-section"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div
+            class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
+          >
+            <div class="text-center sm:text-left">
+              <p
+                class="text-base font-semibold mb-2 text-primary tracking-wide"
+              >
+                Produk
+              </p>
+              <h2
+                class="text-3xl sm:text-4xl font-bold font-heading text-gray-800 dark:text-white leading-tight tracking-tight"
+              >
+                Buket Pilihan Kami
+              </h2>
+            </div>
+            <a
+              href="#"
+              class="btn-primary text-sm px-6 py-2 rounded-lg shadow hover:scale-105 transition-transform duration-200 hidden sm:inline-flex items-center justify-center"
+            >
               Lihat Semua Produk
             </a>
           </div>
+          <div
+            id="galleryGrid"
+            class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 xl:gap-8"
+          >
+            <div class="mt-8 text-center sm:hidden">
+              <a
+                href="#"
+                class="btn-primary text-sm px-6 py-2 rounded-lg shadow inline-flex items-center justify-center"
+              >
+                Lihat Semua Produk
+              </a>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Custom Order Section -->
-    <section id="custom-order" class="py-16 sm:py-20 lg:py-24 bg-light-blue dark:bg-gray-800 fade-in-section">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-12 lg:mb-16">
-          <p class="text-base font-semibold text-primary mb-2">Kustomisasi</p>
-          <h2
-            class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white leading-tight">
-            Wujudkan Buket Impian Anda
-          </h2>
-          <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Tidak menemukan yang Anda cari? Kami siap membantu membuat buket
-            kustom sesuai keinginan dan anggaran Anda.
-          </p>
-        </div>
+      <!-- Custom Order Section -->
+      <section
+        id="custom-order"
+        class="py-16 sm:py-20 lg:py-24 bg-light-blue dark:bg-gray-800 fade-in-section"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <!-- Section Header -->
+          <div class="text-center mb-12 lg:mb-16">
+            <p class="text-base font-semibold text-primary mb-2">Kustomisasi</p>
+            <h2
+              class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white leading-tight"
+            >
+              Wujudkan Buket Impian Anda
+            </h2>
+            <p
+              class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+            >
+              Tidak menemukan yang Anda cari? Kami siap membantu membuat buket
+              kustom sesuai keinginan dan anggaran Anda.
+            </p>
+          </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          <!-- Left Side - Process Steps -->
-          <div class="order-2 lg:order-1">
-            <div class="bg-light-blue dark:bg-gray-700 rounded-2xl p-6 sm:p-8">
-              <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center lg:text-left">
-                Cara Pemesanan Kustom
-              </h3>
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
+          >
+            <!-- Left Side - Process Steps -->
+            <div class="order-2 lg:order-1">
+              <div
+                class="bg-light-blue dark:bg-gray-700 rounded-2xl p-6 sm:p-8"
+              >
+                <h3
+                  class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center lg:text-left"
+                >
+                  Cara Pemesanan Kustom
+                </h3>
 
-              <div class="space-y-6">
-                <div class="flex items-start gap-4">
-                  <div
-                    class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-lg">
-                    1
+                <div class="space-y-6">
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-lg"
+                    >
+                      1
+                    </div>
+                    <div>
+                      <h4
+                        class="font-semibold text-gray-900 dark:text-white mb-1"
+                      >
+                        Konsultasi Awal
+                      </h4>
+                      <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Diskusikan konsep, warna, jenis bunga favorit, dan tema
+                        yang Anda inginkan.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">
-                      Konsultasi Awal
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
-                      Diskusikan konsep, warna, jenis bunga favorit, dan tema
-                      yang Anda inginkan.
-                    </p>
+
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-lg"
+                    >
+                      2
+                    </div>
+                    <div>
+                      <h4
+                        class="font-semibold text-gray-900 dark:text-white mb-1"
+                      >
+                        Tentukan Budget
+                      </h4>
+                      <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Sesuaikan dengan anggaran yang Anda siapkan untuk hasil
+                        terbaik.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-lg"
+                    >
+                      3
+                    </div>
+                    <div>
+                      <h4
+                        class="font-semibold text-gray-900 dark:text-white mb-1"
+                      >
+                        Proses Kreatif
+                      </h4>
+                      <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Tim kreatif kami akan merangkai buket impian Anda
+                        menjadi sebuah mahakarya.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div class="flex items-start gap-4">
-                  <div
-                    class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-lg">
-                    2
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">
-                      Tentukan Budget
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
-                      Sesuaikan dengan anggaran yang Anda siapkan untuk hasil
-                      terbaik.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4">
-                  <div
-                    class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-lg">
-                    3
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">
-                      Proses Kreatif
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
-                      Tim kreatif kami akan merangkai buket impian Anda
-                      menjadi sebuah mahakarya.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Features List -->
-              <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
-                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">
-                  Yang Anda Dapatkan:
-                </h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  <div class="flex items-center gap-2">
-                    <i class="fas fa-check-circle text-primary text-sm"></i>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">Konsultasi gratis</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <i class="fas fa-check-circle text-primary text-sm"></i>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">Desain eksklusif</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <i class="fas fa-check-circle text-primary text-sm"></i>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">Bunga segar terpilih</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <i class="fas fa-check-circle text-primary text-sm"></i>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">Kemasan premium</span>
+                <!-- Features List -->
+                <div
+                  class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600"
+                >
+                  <h4 class="font-semibold text-gray-900 dark:text-white mb-4">
+                    Yang Anda Dapatkan:
+                  </h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="flex items-center gap-2">
+                      <i class="fas fa-check-circle text-primary text-sm"></i>
+                      <span class="text-sm text-gray-600 dark:text-gray-300"
+                        >Konsultasi gratis</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fas fa-check-circle text-primary text-sm"></i>
+                      <span class="text-sm text-gray-600 dark:text-gray-300"
+                        >Desain eksklusif</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fas fa-check-circle text-primary text-sm"></i>
+                      <span class="text-sm text-gray-600 dark:text-gray-300"
+                        >Bunga segar terpilih</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fas fa-check-circle text-primary text-sm"></i>
+                      <span class="text-sm text-gray-600 dark:text-gray-300"
+                        >Kemasan premium</span
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Right Side - Order Form -->
-          <div class="order-1 lg:order-2">
-            <div
-              class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 dark:border-gray-700">
-              <div class="text-center mb-6">
-                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                  Form Pesanan Kustom
-                </h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                  Isi detail di bawah ini untuk memulai konsultasi
-                </p>
-              </div>
-
-              <form id="customOrderForm" class="space-y-5">
-                <div>
-                  <label for="nama" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    <i class="fas fa-user text-primary mr-2"></i>Nama Lengkap
-                    *
-                  </label>
-                  <input type="text" id="nama" required
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                    placeholder="Masukkan nama lengkap Anda" />
-                </div>
-
-                <div>
-                  <label for="telepon" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    <i class="fas fa-phone text-primary mr-2"></i>Nomor
-                    WhatsApp *
-                  </label>
-                  <input type="tel" id="telepon" required
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                    placeholder="Contoh: 08123456789" />
-                </div>
-
-                <div>
-                  <label for="konsep" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    <i class="fas fa-lightbulb text-primary mr-2"></i>Konsep &
-                    Deskripsi *
-                  </label>
-                  <textarea id="konsep" rows="4" required
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
-                    placeholder="Jelaskan konsep buket yang Anda inginkan (warna, jenis bunga, tema, ukuran, dll.)"></textarea>
-                </div>
-
-                <div>
-                  <label for="anggaran" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    <i class="fas fa-money-bill-wave text-primary mr-2"></i>Estimasi Budget
-                  </label>
-                  <div class="relative">
-                    <span
-                      class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400">Rp</span>
-                    <input type="number" id="anggaran" min="50000" step="10000"
-                      class="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                      placeholder="100000" />
-                  </div>
-                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    *Opsional - Membantu kami memberikan rekomendasi terbaik
+            <!-- Right Side - Order Form -->
+            <div class="order-1 lg:order-2">
+              <div
+                class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 dark:border-gray-700"
+              >
+                <div class="text-center mb-6">
+                  <h3
+                    class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white"
+                  >
+                    Form Pesanan Kustom
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                    Isi detail di bawah ini untuk memulai konsultasi
                   </p>
                 </div>
 
-                <button type="button" onclick="sendCustomOrder()"
-                  class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2">
-                  <i class="fab fa-whatsapp text-lg"></i>
-                  <span>Kirim via WhatsApp</span>
-                </button>
+                <form id="customOrderForm" class="space-y-5">
+                  <div>
+                    <label
+                      for="nama"
+                      class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      <i class="fas fa-user text-primary mr-2"></i>Nama Lengkap
+                      *
+                    </label>
+                    <input
+                      type="text"
+                      id="nama"
+                      required
+                      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                      placeholder="Masukkan nama lengkap Anda"
+                    />
+                  </div>
 
-                <p class="text-xs text-center text-gray-500 dark:text-gray-400">
-                  Dengan mengirim form ini, Anda akan diarahkan ke WhatsApp
-                  untuk konsultasi lebih lanjut
-                </p>
-              </form>
+                  <div>
+                    <label
+                      for="telepon"
+                      class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      <i class="fas fa-phone text-primary mr-2"></i>Nomor
+                      WhatsApp *
+                    </label>
+                    <input
+                      type="tel"
+                      id="telepon"
+                      required
+                      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                      placeholder="Contoh: 08123456789"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="konsep"
+                      class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      <i class="fas fa-lightbulb text-primary mr-2"></i>Konsep &
+                      Deskripsi *
+                    </label>
+                    <textarea
+                      id="konsep"
+                      rows="4"
+                      required
+                      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
+                      placeholder="Jelaskan konsep buket yang Anda inginkan (warna, jenis bunga, tema, ukuran, dll.)"
+                    ></textarea>
+                  </div>
+
+                  <div>
+                    <label
+                      for="anggaran"
+                      class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      <i class="fas fa-money-bill-wave text-primary mr-2"></i
+                      >Estimasi Budget
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                        >Rp</span
+                      >
+                      <input
+                        type="number"
+                        id="anggaran"
+                        min="50000"
+                        step="10000"
+                        class="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                        placeholder="100000"
+                      />
+                    </div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      *Opsional - Membantu kami memberikan rekomendasi terbaik
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onclick="sendCustomOrder()"
+                    class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
+                  >
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>Kirim via WhatsApp</span>
+                  </button>
+
+                  <p
+                    class="text-xs text-center text-gray-500 dark:text-gray-400"
+                  >
+                    Dengan mengirim form ini, Anda akan diarahkan ke WhatsApp
+                    untuk konsultasi lebih lanjut
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Gallery Section -->
-    <section id="galeri" class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900 fade-in-section">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <p class="text-base font-semibold text-primary">Galeri</p>
-          <h2 class="font-heading mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            Galeri Kreasi Bunga Kami
-          </h2>
-        </div>
-        <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          <div class="grid grid-cols-1 gap-6 lg:gap-8 h-fit">
-            <div
-              class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300">
-              <img
-                src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Buket Bunga Merah Muda" loading="lazy"
-                class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105" />
-            </div>
-            <div
-              class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300">
-              <img
-                src="https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Buket Bunga Putih Elegant" loading="lazy"
-                class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105" />
-            </div>
+      <!-- Gallery Section -->
+      <section
+        id="galeri"
+        class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900 fade-in-section"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <p class="text-base font-semibold text-primary">Galeri</p>
+            <h2
+              class="font-heading mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"
+            >
+              Galeri Kreasi Bunga Kami
+            </h2>
           </div>
-          <div class="grid grid-cols-1 gap-6 lg:gap-8 h-fit">
-            <div
-              class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300">
-              <img
-                src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Buket Bunga Kuning Cerah" loading="lazy"
-                class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105" />
-            </div>
-            <div
-              class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300">
-              <img
-                src="https://images.unsplash.com/photo-1574684891174-df6b02ab38d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Buket Bunga Mixed Color" loading="lazy"
-                class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105" />
-            </div>
-          </div>
-          <div class="sm:col-span-2 lg:col-span-2 h-fit">
-            <div
-              class="w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300"
-              style="aspect-ratio: 2/2">
-              <img
-                src="https://images.unsplash.com/photo-1521747116042-5a810fda9664?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Rangkaian Bunga Wedding Premium" loading="lazy"
-                class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="bg-light-blue dark:bg-gray-800 py-16 sm:py-20 lg:py-24 fade-in-section">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <p class="text-base font-semibold text-primary">Testimoni</p>
-          <h2
-            class="font-heading mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-5xl">
-            Apa Kata Pelanggan Kami
-          </h2>
-        </div>
-        <div class="mt-12 sm:mt-16">
-          <div class="swiper testimoni-swiper relative">
-            <div class="swiper-wrapper" id="testimoniSwiper"></div>
-
-            <!-- Pagination -->
-            <div class="swiper-pagination mt-8 sm:mt-12"></div>
-
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-next !text-primary !w-8 !h-8 sm:!w-10 sm:!h-10 flex items-center justify-center">
-            </div>
-            <div class="swiper-button-prev !text-primary !w-8 !h-8 sm:!w-10 sm:!h-10 flex items-center justify-center">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Info Section -->
-    <section id="info" class="bg-white dark:bg-gray-900 py-16 sm:py-20 lg:py-24 fade-in-section">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <p class="text-base font-semibold text-primary">Informasi</p>
-          <h2 class="font-heading mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            Informasi Penting
-          </h2>
-        </div>
-        <div class="mt-16 grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-12" id="infoSection"></div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="kontak" class="py-16 sm:py-20 lg:py-24 bg-light-blue dark:bg-gray-800 fade-in-section">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <p class="text-base font-semibold text-primary">Kontak</p>
-          <h2 class="font-heading mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            Hubungi Kami
-          </h2>
-        </div>
-
-        <div class="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-16">
           <div
-            class="order-last rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-8 shadow-sm lg:order-first lg:p-12">
-            <div class="space-y-10">
-              <div>
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  Informasi Kontak
-                </h3>
-                <dl class="mt-6 space-y-5 text-base text-gray-700 dark:text-gray-300">
-                  <div class="flex items-center gap-x-3">
-                    <dt class="flex-none">
-                      <span class="sr-only">Telepon/WhatsApp</span>
-                      <i class="fas fa-phone h-6 w-6 text-gray-500 dark:text-gray-400"></i>
-                    </dt>
-                    <dd>
-                      <a class="hover:text-primary dark:hover:text-primary transition-colors"
-                        href="tel:0823-2704-4636">0823-2704-4636</a>
-                    </dd>
-                  </div>
-                  <div class="flex items-center gap-x-3">
-                    <dt class="flex-none">
-                      <span class="sr-only">Email</span>
-                      <i class="fas fa-envelope h-6 w-6 text-gray-500 dark:text-gray-400"></i>
-                    </dt>
-                    <dd>
-                      <a class="hover:text-primary dark:hover:text-primary transition-colors"
-                        href="mailto:ggfloristofficial@gmail.com">ggfloristofficial@gmail.com</a>
-                    </dd>
-                  </div>
-                </dl>
+            class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"
+          >
+            <div class="grid grid-cols-1 gap-6 lg:gap-8 h-fit">
+              <div
+                class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Buket Bunga Merah Muda"
+                  loading="lazy"
+                  class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
+              <div
+                class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Buket Bunga Putih Elegant"
+                  loading="lazy"
+                  class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-6 lg:gap-8 h-fit">
+              <div
+                class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Buket Bunga Kuning Cerah"
+                  loading="lazy"
+                  class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div
+                class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1574684891174-df6b02ab38d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Buket Bunga Mixed Color"
+                  loading="lazy"
+                  class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            </div>
+            <div class="sm:col-span-2 lg:col-span-2 h-fit">
+              <div
+                class="w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-700 group shadow-sm hover:shadow-md transition-shadow duration-300"
+                style="aspect-ratio: 2/2"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1521747116042-5a810fda9664?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Rangkaian Bunga Wedding Premium"
+                  loading="lazy"
+                  class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div>
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  Lokasi Toko
-                </h3>
-                <div class="mt-6 space-y-6">
-                  <div class="flex items-start gap-x-3">
-                    <div class="flex-none">
-                      <i class="fas fa-map-marker-alt h-6 w-6 text-gray-500 dark:text-gray-400"></i>
+      <!-- Testimonials Section -->
+      <section
+        id="testimonials"
+        class="bg-light-blue dark:bg-gray-800 py-16 sm:py-20 lg:py-24 fade-in-section"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <p class="text-base font-semibold text-primary">Testimoni</p>
+            <h2
+              class="font-heading mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-5xl"
+            >
+              Apa Kata Pelanggan Kami
+            </h2>
+          </div>
+          <div class="mt-12 sm:mt-16">
+            <div class="swiper testimoni-swiper relative">
+              <div class="swiper-wrapper" id="testimoniSwiper"></div>
+
+              <!-- Pagination -->
+              <div class="swiper-pagination mt-8 sm:mt-12"></div>
+
+              <!-- Navigation Buttons -->
+              <div
+                class="swiper-button-next !text-primary !w-8 !h-8 sm:!w-10 sm:!h-10 flex items-center justify-center"
+              ></div>
+              <div
+                class="swiper-button-prev !text-primary !w-8 !h-8 sm:!w-10 sm:!h-10 flex items-center justify-center"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Info Section -->
+      <section
+        id="info"
+        class="bg-white dark:bg-gray-900 py-16 sm:py-20 lg:py-24 fade-in-section"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <p class="text-base font-semibold text-primary">Informasi</p>
+            <h2
+              class="font-heading mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"
+            >
+              Informasi Penting
+            </h2>
+          </div>
+          <div
+            class="mt-16 grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-12"
+            id="infoSection"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section
+        id="kontak"
+        class="py-16 sm:py-20 lg:py-24 bg-light-blue dark:bg-gray-800 fade-in-section"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <p class="text-base font-semibold text-primary">Kontak</p>
+            <h2
+              class="font-heading mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"
+            >
+              Hubungi Kami
+            </h2>
+          </div>
+
+          <div
+            class="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-16"
+          >
+            <div
+              class="order-last rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-8 shadow-sm lg:order-first lg:p-12"
+            >
+              <div class="space-y-10">
+                <div>
+                  <h3
+                    class="text-xl font-semibold text-gray-900 dark:text-white"
+                  >
+                    Informasi Kontak
+                  </h3>
+                  <dl
+                    class="mt-6 space-y-5 text-base text-gray-700 dark:text-gray-300"
+                  >
+                    <div class="flex items-center gap-x-3">
+                      <dt class="flex-none">
+                        <span class="sr-only">Telepon/WhatsApp</span>
+                        <i
+                          class="fas fa-phone h-6 w-6 text-gray-500 dark:text-gray-400"
+                        ></i>
+                      </dt>
+                      <dd>
+                        <a
+                          class="hover:text-primary dark:hover:text-primary transition-colors"
+                          href="tel:0823-2704-4636"
+                          >0823-2704-4636</a
+                        >
+                      </dd>
                     </div>
-                    <div>
-                      <p class="font-semibold text-gray-800 dark:text-gray-200">
-                        Cabang UNDIP
-                      </p>
-                      <p class="mt-1 text-base text-gray-600 dark:text-gray-400">
-                        Jl. Banyu Putih Raya No.13, Tembalang, Kota Semarang,
-                        Jawa Tengah 50275
-                      </p>
+                    <div class="flex items-center gap-x-3">
+                      <dt class="flex-none">
+                        <span class="sr-only">Email</span>
+                        <i
+                          class="fas fa-envelope h-6 w-6 text-gray-500 dark:text-gray-400"
+                        ></i>
+                      </dt>
+                      <dd>
+                        <a
+                          class="hover:text-primary dark:hover:text-primary transition-colors"
+                          href="mailto:ggfloristofficial@gmail.com"
+                          >ggfloristofficial@gmail.com</a
+                        >
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div>
+                  <h3
+                    class="text-xl font-semibold text-gray-900 dark:text-white"
+                  >
+                    Lokasi Toko
+                  </h3>
+                  <div class="mt-6 space-y-6">
+                    <div class="flex items-start gap-x-3">
+                      <div class="flex-none">
+                        <i
+                          class="fas fa-map-marker-alt h-6 w-6 text-gray-500 dark:text-gray-400"
+                        ></i>
+                      </div>
+                      <div>
+                        <p
+                          class="font-semibold text-gray-800 dark:text-gray-200"
+                        >
+                          Cabang UNDIP
+                        </p>
+                        <p
+                          class="mt-1 text-base text-gray-600 dark:text-gray-400"
+                        >
+                          Jl. Banyu Putih Raya No.13, Tembalang, Kota Semarang,
+                          Jawa Tengah 50275
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-x-3">
+                      <div class="flex-none">
+                        <i
+                          class="fas fa-map-marker-alt h-6 w-6 text-gray-500 dark:text-gray-400"
+                        ></i>
+                      </div>
+                      <div>
+                        <p
+                          class="font-semibold text-gray-800 dark:text-gray-200"
+                        >
+                          Cabang UNNES
+                        </p>
+                        <p
+                          class="mt-1 text-base text-gray-600 dark:text-gray-400"
+                        >
+                          Jl. Taman Siswa No.44, Sekaran, Kec. Gn. Pati, Kota
+                          Semarang, Jawa Tengah 50229
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div class="flex items-start gap-x-3">
-                    <div class="flex-none">
-                      <i class="fas fa-map-marker-alt h-6 w-6 text-gray-500 dark:text-gray-400"></i>
+                </div>
+
+                <div>
+                  <h3
+                    class="text-xl font-semibold text-gray-900 dark:text-white"
+                  >
+                    Jam Operasional
+                  </h3>
+                  <div
+                    class="mt-6 space-y-3 text-base text-gray-700 dark:text-gray-300"
+                  >
+                    <div class="flex justify-between">
+                      <span>Senin - Sabtu</span>
+                      <span class="font-medium text-gray-800 dark:text-gray-200"
+                        >07.30 - 17.00</span
+                      >
                     </div>
-                    <div>
-                      <p class="font-semibold text-gray-800 dark:text-gray-200">
-                        Cabang UNNES
-                      </p>
-                      <p class="mt-1 text-base text-gray-600 dark:text-gray-400">
-                        Jl. Taman Siswa No.44, Sekaran, Kec. Gn. Pati, Kota
-                        Semarang, Jawa Tengah 50229
-                      </p>
+                    <div class="flex justify-between">
+                      <span>Senin - Minggu</span>
+                      <span class="font-medium text-gray-800 dark:text-gray-200"
+                        >07.30 - 21.00</span
+                      >
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div>
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  Jam Operasional
-                </h3>
-                <div class="mt-6 space-y-3 text-base text-gray-700 dark:text-gray-300">
-                  <div class="flex justify-between">
-                    <span>Senin - Sabtu</span>
-                    <span class="font-medium text-gray-800 dark:text-gray-200">07.30 - 17.00</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span>Senin - Minggu</span>
-                    <span class="font-medium text-gray-800 dark:text-gray-200">07.30 - 21.00</span>
-                  </div>
-                </div>
+            <div class="space-y-8">
+              <div
+                class="aspect-video w-full rounded-xl border border-gray-300 dark:border-gray-600"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.622741921953!2d110.42952047507984!3d-7.053538292948769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708d94999b470b%3A0x972a08e98cd08a41!2sGG%20Florist!5e0!3m2!1sid!2sid!4v1750953407230!5m2!1sid!2sid"
+                  class="w-full h-full rounded-xl border border-gray-300 dark:border-gray-600"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <div
+                class="aspect-video w-full rounded-xl border border-gray-300 dark:border-gray-600"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.689017869347!2d110.39044587507968!3d-7.045783392956363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708bc50912099f%3A0x6e7de38b57bd1623!2sGG%20Florist%20Unnes!5e0!3m2!1sid!2sid!4v1750953471393!5m2!1sid!2sid"
+                  class="w-full h-full rounded-xl border border-gray-300 dark:border-gray-600"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+    </main>
 
-          <div class="space-y-8">
-            <div class="aspect-video w-full rounded-xl border border-gray-300 dark:border-gray-600">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.622741921953!2d110.42952047507984!3d-7.053538292948769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708d94999b470b%3A0x972a08e98cd08a41!2sGG%20Florist!5e0!3m2!1sid!2sid!4v1750953407230!5m2!1sid!2sid"
-                class="w-full h-full rounded-xl border border-gray-300 dark:border-gray-600" style="border: 0"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <div class="aspect-video w-full rounded-xl border border-gray-300 dark:border-gray-600">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.689017869347!2d110.39044587507968!3d-7.045783392956363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708bc50912099f%3A0x6e7de38b57bd1623!2sGG%20Florist%20Unnes!5e0!3m2!1sid!2sid!4v1750953471393!5m2!1sid!2sid"
-                class="w-full h-full rounded-xl border border-gray-300 dark:border-gray-600" style="border: 0"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+    <footer
+      class="bg-primary dark:bg-gray-900 text-white dark:text-gray-100"
+    ></footer>
+
+    <div id="chatbot-component">
+      <button
+        id="chatToggle"
+        class="fixed bottom-6 right-6 bg-primary hover:bg-primary-hover text-white p-4 rounded-full shadow-lg transition-colors duration-300 z-50"
+        aria-label="Open Chatbot"
+      >
+        <i class="fas fa-comments text-xl"></i>
+      </button>
+      <div
+        id="chatContainer"
+        class="fixed bottom-24 right-6 w-80 max-w-[90vw] h-[450px] bg-white dark:bg-gray-900 rounded-lg shadow-2xl z-40 transform translate-y-full opacity-0 transition-all duration-300 border border-gray-200 dark:border-gray-700"
+      >
+        <div
+          class="bg-primary text-white p-3 rounded-t-lg flex justify-between items-center"
+        >
+          <div class="flex items-center">
+            <i class="fas fa-robot mr-2"></i>
+            <span class="font-semibold text-sm">GG Florist Assistant</span>
           </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="bg-primary dark:bg-gray-900 text-white dark:text-gray-100"></footer>
-
-  <div id="chatbot-component">
-    <button id="chatToggle"
-      class="fixed bottom-6 right-6 bg-primary hover:bg-primary-hover text-white p-4 rounded-full shadow-lg transition-colors duration-300 z-50"
-      aria-label="Open Chatbot">
-      <i class="fas fa-comments text-xl"></i>
-    </button>
-    <div id="chatContainer"
-      class="fixed bottom-24 right-6 w-80 max-w-[90vw] h-96 bg-white dark:bg-gray-900 rounded-lg shadow-2xl z-40 transform translate-y-full opacity-0 transition-all duration-300 border border-gray-200 dark:border-gray-700">
-      <div class="bg-primary text-white p-3 rounded-t-lg flex justify-between items-center">
-        <div class="flex items-center">
-          <i class="fas fa-robot mr-2"></i>
-          <span class="font-semibold text-sm">GG Florist Assistant</span>
-        </div>
-        <button id="chatClose" class="text-white hover:text-gray-200 transition-colors" aria-label="Close Chatbot">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div id="chatMessages" class="h-64 overflow-y-auto p-4 space-y-3"></div>
-      <div class="p-3 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-b-lg">
-        <div class="flex space-x-2">
-          <input type="text" id="chatInput" placeholder="Ketik pesan..."
-            class="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
-            aria-label="Chat Input" />
-          <button id="chatSend"
-            class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg transition-colors"
-            aria-label="Send Message">
-            <i class="fas fa-paper-plane"></i>
+          <button
+            id="chatClose"
+            class="text-white hover:text-gray-200 transition-colors"
+            aria-label="Close Chatbot"
+          >
+            <i class="fas fa-times"></i>
           </button>
+        </div>
+        <div
+          id="chatMessages"
+          class="prose h-[335px] overflow-y-auto p-4 space-y-3"
+        ></div>
+        <div
+          class="p-3 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-b-lg"
+        >
+          <div class="flex space-x-2">
+            <input
+              type="text"
+              id="chatInput"
+              placeholder="Ketik pesan..."
+              class="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+              aria-label="Chat Input"
+            />
+            <button
+              id="chatSend"
+              class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg transition-colors"
+              aria-label="Send Message"
+            >
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
