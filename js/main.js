@@ -103,7 +103,6 @@ const Gallery = {
       categoryContainer.className =
         "overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 flex gap-2 sm:gap-0 sm:justify-center border-b border-gray-200 dark:border-gray-600 mb-12 mt-8";
 
-      // Insert after the header section
       const headerSection = productSection.querySelector(".text-center");
       if (headerSection) {
         headerSection.parentNode.insertBefore(
