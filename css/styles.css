@@ -79,21 +79,14 @@ h6 {
   font-family: "Playfair Display", serif;
 }
 
-section {
-  scroll-margin-top: 50px;
-}
-
 /* Button Styles */
 .btn-primary {
   background-color: var(--color-primary);
   color: #ffffff;
   font-weight: 600;
-  padding: 0.625rem 1.5rem;
-  /* px-6 py-2.5 */
-  border-radius: 0.5rem;
-  /* rounded-lg */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  /* shadow-sm */
+  padding: 0.625rem 1.5rem; /* px-6 py-2.5 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm */
   display: inline-flex;
   align-items: center;
   transition: all 0.3s ease;
@@ -101,8 +94,7 @@ section {
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* hover:shadow-md */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* hover:shadow-md */
 }
 
 /* Nav Link Underline Effect */
@@ -116,8 +108,7 @@ section {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
-  /* h-0.5 */
+  height: 2px; /* h-0.5 */
   background-color: var(--color-primary);
   transition: all 0.3s ease;
 }
@@ -128,13 +119,19 @@ section {
 
 /* Hero Section */
 .hero-overlay {
-  background: linear-gradient(to bottom, transparent, #1f2937);
-  /* bg-gradient-to-b from-transparent to-gray-800 */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #1f2937
+  ); /* bg-gradient-to-b from-transparent to-gray-800 */
 }
 
 .dark .hero-overlay {
-  background: linear-gradient(to bottom, transparent, #111827);
-  /* to-gray-900 */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #111827
+  ); /* to-gray-900 */
 }
 
 .hero-background {
@@ -148,7 +145,7 @@ section {
   opacity: 0.75;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .hero-background {
     background-attachment: scroll;
   }
@@ -158,23 +155,17 @@ section {
 .swiper-button-next,
 .swiper-button-prev {
   color: var(--color-primary);
-  width: 44px;
-  /* w-11 */
-  height: 44px;
-  /* h-11 */
-  border-radius: 50%;
-  /* rounded-full */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* shadow-md */
+  width: 44px; /* w-11 */
+  height: 44px; /* h-11 */
+  border-radius: 50%; /* rounded-full */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
   transition: all 0.3s ease;
 }
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  font-size: 1.125rem;
-  /* text-lg */
-  font-weight: 700;
-  /* font-bold */
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 700; /* font-bold */
 }
 
 .swiper-pagination-bullet {
@@ -263,8 +254,7 @@ section {
 /* Fade-in Animation */
 .fade-in-section {
   opacity: 0;
-  transform: translateY(1.25rem);
-  /* translate-y-5 */
+  transform: translateY(1.25rem); /* translate-y-5 */
   transition: all 0.6s ease-out;
 }
 
@@ -275,8 +265,7 @@ section {
 
 /* Dark Mode Border Fix */
 .dark .border-black {
-  border-color: #ffffff;
-  /* border-white */
+  border-color: #ffffff; /* border-white */
 }
 
 /* Custom Order Section Enhancements */
@@ -350,61 +339,5 @@ section {
   #custom-order .text-3xl.sm\\:text-4xl.lg\\:text-5xl {
     font-size: 2rem;
     line-height: 1.2;
-  }
-}
-
-/* Utility classes for product gallery */
-.line-clamp-1 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-}
-
-.line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-}
-
-/* Category filter button styling */
-.category-filter-btn {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.category-filter-btn:hover {
-  color: var(--color-primary);
-}
-
-.category-filter-btn.text-primary {
-  border-bottom-color: var(--color-primary);
-}
-
-/* Product card hover effects */
-.group:hover .group-hover\:scale-110 {
-  transform: scale(1.1);
-}
-
-/* Gallery grid animation */
-#galleryGrid {
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Loading animation for product images */
-.product-image-loading {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
   }
 }

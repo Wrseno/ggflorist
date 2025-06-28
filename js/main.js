@@ -232,12 +232,12 @@ const Testimonials = {
               <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <i class="fas fa-user text-lg text-primary"></i>
               </div>
+              <figcaption class="text-lg font-heading text-gray-900 dark:text-white">
+                ${testimonial.name}
+              </figcaption>
               <blockquote class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                 <p>"${testimonial.message}"</p>
               </blockquote>
-              <figcaption class="font-semibold text-gray-900 dark:text-white text-base">
-                ${testimonial.name}
-              </figcaption>
             </div>
           </div>
         </div>
