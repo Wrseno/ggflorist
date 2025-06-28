@@ -53,13 +53,11 @@ const MobileMenu = {
 
     if (!menuButton || !mobileMenu) return;
 
-    // Toggle mobile menu
     menuButton.addEventListener("click", () => {
       mobileMenu.classList.toggle("-translate-y-[150%]");
       mobileMenu.classList.toggle("translate-y-0");
     });
 
-    // Close menu when a link is clicked
     mobileMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         mobileMenu.classList.add("-translate-y-[150%]");
@@ -81,7 +79,7 @@ const AnimationObserver = {
           }
         });
       },
-      { threshold: 0.1 }
+      {threshold: 0.1}
     );
 
     document
@@ -129,7 +127,8 @@ const Testimonials = {
     if (!swiperWrapper) return;
 
     // Hanya render 1 testimoni per slide (Swiper akan handle responsive)
-    const slides = data.testimonials.map((testimonial) => `
+    const slides = data.testimonials.map(
+      (testimonial) => `
       <div class="swiper-slide">
         <div class="max-w-md mx-auto px-4">
           <div class="p-6">
@@ -147,7 +146,8 @@ const Testimonials = {
           </div>
         </div>
       </div>
-    `);
+    `
+    );
 
     swiperWrapper.innerHTML = slides.join("");
 
@@ -184,40 +184,43 @@ const Testimonials = {
 
 // Info Section Module
 const InfoSection = {
-    render() {
-        const infoContainer = document.getElementById("infoSection");
-        if (!infoContainer) return;
+  render() {
+    const infoContainer = document.getElementById("infoSection");
+    if (!infoContainer) return;
 
-        
-        const policyIcons = [
-            "fas fa-clock",      // 1st policy
-            "fas fa-exclamation",// 2nd policy
-            "fas fa-money-bill", // 3rd policy
-            "fas fa-gift",       // 4th policy
-            "fas fa-info-circle" // 5th policy, etc.
-        ];
+    const policyIcons = [
+      "fas fa-clock",
+      "fas fa-exclamation",
+      "fas fa-money-bill",
+      "fas fa-gift",
+      "fas fa-info-circle",
+    ];
 
-        infoContainer.innerHTML = `
+    infoContainer.innerHTML = `
             <div class="rounded-2xl bg-white dark:bg-gray-700 p-8 shadow-sm border border-gray-100 dark:border-gray-600 mb-8">
                 <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
                     Bagaimana Cara Memesan
                 </h3>
                 <div class="space-y-5">
                     ${data.howToOrderSteps
-                        .map(
-                            (step, index) => `
+                      .map(
+                        (step, index) => `
                         <div class="flex items-start gap-x-4 rounded-xl bg-slate-50 dark:bg-gray-600 p-4 border border-slate-200 dark:border-gray-500">
                             <div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-slate-200 dark:bg-gray-500 text-sm font-semibold text-slate-700 dark:text-gray-200">
                                 ${index + 1}
                             </div>
                             <div>
-                                <p class="font-semibold text-gray-900 dark:text-white">${step.title}</p>
-                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${step.desc}</p>
+                                <p class="font-semibold text-gray-900 dark:text-white">${
+                                  step.title
+                                }</p>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${
+                                  step.desc
+                                }</p>
                             </div>
                         </div>
                     `
-                        )
-                        .join("")}
+                      )
+                      .join("")}
                 </div>
             </div>
             
@@ -227,33 +230,39 @@ const InfoSection = {
                 </h3>
                 <div class="space-y-5">
                     ${data.lmoPolicy
-                        .map(
-                            (policy, index) => `
+                      .map(
+                        (policy, index) => `
                         <div class="flex items-start gap-x-4 rounded-xl bg-slate-50 dark:bg-gray-600 p-4 border border-slate-200 dark:border-gray-500">
                             <div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-primary/10 dark:bg-blue-900">
-                                <i class="${policyIcons[index] || "fas fa-info-circle"} text-primary text-lg dark:text-blue-300"></i>
+                                <i class="${
+                                  policyIcons[index] || "fas fa-info-circle"
+                                } text-primary text-lg dark:text-blue-300"></i>
                             </div>
                             <div>
-                                <p class="font-semibold text-gray-900 dark:text-white">${policy.title}</p>
-                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${policy.desc}</p>
+                                <p class="font-semibold text-gray-900 dark:text-white">${
+                                  policy.title
+                                }</p>
+                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${
+                                  policy.desc
+                                }</p>
                             </div>
                         </div>
                     `
-                        )
-                        .join("")}
+                      )
+                      .join("")}
                 </div>
             </div>
         `;
-    },
+  },
 };
 
 // Footer Module
 const Footer = {
-    render() {
-        const footer = document.querySelector("footer");
-        if (!footer) return;
+  render() {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
 
-        footer.innerHTML = `
+    footer.innerHTML = `
             <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4 text-center md:text-left">
                     <div class="lg:col-span-2 flex flex-col items-center md:items-start">
@@ -266,17 +275,23 @@ const Footer = {
                             Penyedia rangkaian bunga segar dan hadiah spesial untuk semua momen berharga Anda di Semarang dan sekitarnya.
                         </p>
                         <div class="mt-6 flex justify-center md:justify-start gap-x-4">
-                            <a href="${data.contactInfo.socials.whatsapp}" target="_blank" 
+                            <a href="${
+                              data.contactInfo.socials.whatsapp
+                            }" target="_blank" 
                                  class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
                                 <span class="sr-only">WhatsApp</span>
                                 <i class="fab fa-whatsapp text-2xl"></i>
                             </a>
-                            <a href="${data.contactInfo.socials.instagram}" target="_blank" 
+                            <a href="${
+                              data.contactInfo.socials.instagram
+                            }" target="_blank" 
                                  class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
                                 <span class="sr-only">Instagram</span>
                                 <i class="fab fa-instagram text-2xl"></i>
                             </a>
-                            <a href="${data.contactInfo.socials.tiktok}" target="_blank" 
+                            <a href="${
+                              data.contactInfo.socials.tiktok
+                            }" target="_blank" 
                                  class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
                                 <span class="sr-only">TikTok</span>
                                 <i class="fab fa-tiktok text-2xl"></i>
@@ -329,7 +344,7 @@ const Footer = {
                 </div>
             </div>
         `;
-    },
+  },
 };
 
 // Chatbot Module
@@ -341,17 +356,11 @@ const Chatbot = {
     const chatInput = document.getElementById("chatInput");
     const chatSend = document.getElementById("chatSend");
     const chatMessages = document.getElementById("chatMessages");
-    const kb = data.chatbotKB;
 
-    if (
-      !chatToggle ||
-      !chatContainer ||
-      !chatClose ||
-      !chatInput ||
-      !chatSend ||
-      !chatMessages
-    )
-      return;
+    if (!chatToggle || !chatMessages) return;
+
+    const API_KEY = "AIzaSyC4PrfoJDrAae7zA8HdvdHCBNJJbJsQb38";
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
     const addMessage = (message, isUser = false) => {
       const messageDiv = document.createElement("div");
@@ -360,41 +369,71 @@ const Chatbot = {
       }`;
       messageDiv.innerHTML = isUser
         ? `
-          <div class="bg-primary text-white rounded-xl rounded-br-none p-3 max-w-xs">
-            <p class="text-sm">${message}</p>
-          </div>
-          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-            <i class="fas fa-user text-white text-sm"></i>
-          </div>`
+        <div class="bg-primary text-white rounded-xl rounded-br-none p-3 max-w-xs">
+          <p class="text-xs">${message}</p>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-user text-white text-xs"></i>
+        </div>`
         : `
-          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 dark:bg-blue-900">
-            <i class="fas fa-robot text-primary text-sm dark:text-blue-300"></i>
-          </div>
-          <div class="bg-gray-100 dark:bg-gray-700 rounded-xl rounded-bl-none p-3 max-w-xs">
-            <p class="text-sm text-gray-800 dark:text-gray-200">${message}</p>
-          </div>`;
+        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 dark:bg-blue-900">
+          <i class="fas fa-robot text-primary text-xs dark:text-blue-300"></i>
+        </div>
+        <div class="bg-gray-100 dark:bg-gray-700 rounded-xl rounded-bl-none p-3 max-w-xs">
+          <p class="text-xs text-gray-800 dark:text-gray-200">${message}</p>
+        </div>`;
       chatMessages.appendChild(messageDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     };
 
-    const getAIResponse = (userMessage) => {
-      const message = userMessage.toLowerCase().trim();
+    const getGeminiResponse = async (userMessage) => {
+      const knowledgeBase = `
+        - Data Produk yang tersedia: ${JSON.stringify(data.products)}
+        - Testimoni dari pelanggan: ${JSON.stringify(data.testimonials)}
+        - Langkah-langkah cara pemesanan: "${JSON.stringify(
+          data.howToOrderSteps
+        )}"
+        - Kebijakan garansi (LMO Policy): "${JSON.stringify(data.lmoPolicy)}"
+        - Informasi Kontak Toko: "${JSON.stringify(data.contactInfo)}"
+      `;
 
-      for (const key in kb.responses) {
-        if (key !== "default" && key !== "welcome" && key !== "thanks") {
-          const keywords = kb[key] || [];
-          if (keywords.some((k) => message.includes(k))) {
-            return kb.responses[key];
-          }
+      const fullPrompt = `
+        Kamu adalah asisten dari sebuah toko buket dengan nama GGFlorist, jawablah pelanggan dengan ramah. Jika pelanggan menanyakan diluar topik buket alihkan pembicaraan ke buket lagi, jangan dijawab jika tidak berkaitan dengan buket dalam bentuk apapun. Jangan memberikan kode-kode atau response yang tidak jelas. Jawab pertanyaan pelanggan berdasarkan data berikut:
+        ---
+        DATA PENGETAHUAN:
+        ${knowledgeBase}
+        ---
+        PERTANYAAN PELANGGAN: "${userMessage}"
+        JAWABAN RAMAHMU:
+      `;
+
+      try {
+        const requestBody = {
+          contents: [{parts: [{text: fullPrompt}]}],
+        };
+
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(requestBody),
+        });
+
+        if (!response.ok) {
+          throw new Error(`API request failed with status ${response.status}`);
         }
+
+        const responseData = await response.json();
+        const botMessage =
+          responseData?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        return (
+          botMessage ||
+          "Maaf, sepertinya ada sedikit kendala. Bisa ulangi pertanyaannya?"
+        );
+      } catch (error) {
+        console.error("Error fetching Gemini response:", error);
+        return "Maaf, terjadi kesalahan. Tim kami sedang memperbaikinya.";
       }
-
-      if (kb.thanks.some((k) => message.includes(k)))
-        return kb.responses.thanks;
-      if (kb.greetings.some((k) => message.includes(k)))
-        return kb.responses.welcome;
-
-      return kb.responses.default;
     };
 
     const handleSendMessage = async () => {
@@ -404,10 +443,16 @@ const Chatbot = {
       addMessage(message, true);
       chatInput.value = "";
 
-      setTimeout(() => addMessage(getAIResponse(message)), 1000);
+      addMessage("...", false);
+      const typingIndicator = chatMessages.lastChild;
+
+      const aiResponse = await getGeminiResponse(message);
+
+      chatMessages.removeChild(typingIndicator);
+
+      addMessage(aiResponse, false);
     };
 
-    // Event listeners
     chatToggle.addEventListener("click", () => {
       chatContainer.classList.remove("translate-y-full", "opacity-0");
       chatToggle.classList.add("scale-0");
@@ -424,8 +469,12 @@ const Chatbot = {
       (e) => e.key === "Enter" && handleSendMessage()
     );
 
-    // Initial welcome message
-    addMessage(kb.responses.welcome);
+    addMessage("Halo! Ada yang bisa saya bantu?", false);
+
+    addMessage(
+      "Halo! Selamat datang di Toko Buket Happy. Ada yang bisa saya bantu?",
+      false
+    );
   },
 };
 
@@ -455,7 +504,6 @@ const CustomOrder = {
 // Application Initialization
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    // Initialize all modules
     ThemeManager.init();
     MobileMenu.init();
     AnimationObserver.init();
