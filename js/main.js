@@ -79,7 +79,7 @@ const AnimationObserver = {
           }
         });
       },
-      {threshold: 0.1}
+      { threshold: 0.1 }
     );
 
     document
@@ -90,33 +90,132 @@ const AnimationObserver = {
 
 // Gallery Module
 const Gallery = {
-  render() {
+  currentFilter: "fresh", // Default to fresh instead of all
+
+  renderCategoryButtons() {
+    const productSection = document.getElementById("produk");
+    if (!productSection) return;
+
+    // Find the category buttons container or create it
+    let categoryContainer = document.getElementById("categoryButtons");
+    if (!categoryContainer) {
+      categoryContainer = document.createElement("div");
+      categoryContainer.id = "categoryButtons";
+      categoryContainer.className =
+        // Responsive: horizontal scroll on small screens, flex center on large
+        "overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 flex gap-2 sm:gap-0 sm:justify-center border-b border-gray-200 dark:border-gray-600 mb-12 mt-8";
+
+      // Insert after the header section
+      const headerSection = productSection.querySelector(".text-center");
+      if (headerSection) {
+        headerSection.parentNode.insertBefore(
+          categoryContainer,
+          headerSection.nextSibling
+        );
+      }
+    }
+
+    categoryContainer.innerHTML = data.productCategories
+      .map(
+        (category) => `
+        <button 
+          onclick="Gallery.filterProducts('${category.id}')"
+          class="category-filter-btn flex-shrink-0 px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm transition-all duration-300 relative ${
+            this.currentFilter === category.id
+              ? "text-primary border-primary"
+              : "text-gray-600 dark:text-gray-400 hover:text-primary border-transparent"
+          } border-b-2"
+          data-category="${category.id}"
+        >
+          ${category.name}
+        </button>
+      `
+      )
+      .join("");
+  },
+
+  filterProducts(categoryId) {
+    this.currentFilter = categoryId;
+    this.renderCategoryButtons(); // Update button states
+    this.renderProducts();
+
+    // Add smooth scroll animation
+    const grid = document.getElementById("galleryGrid");
+    if (grid) {
+      grid.style.opacity = "0";
+      setTimeout(() => {
+        grid.style.opacity = "1";
+      }, 150);
+    }
+  },
+
+  getFilteredProducts() {
+    return data.products.filter(
+      (product) => product.category === this.currentFilter
+    );
+  },
+
+  renderProducts() {
     const grid = document.getElementById("galleryGrid");
     if (!grid) return;
 
-    grid.innerHTML = data.products
+    const filteredProducts = this.getFilteredProducts();
+
+    if (filteredProducts.length === 0) {
+      grid.innerHTML = `
+        <div class="col-span-full text-center py-12">
+          <div class="text-gray-400 dark:text-gray-600 mb-4">
+            <i class="fas fa-search text-4xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            Tidak ada produk ditemukan
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Coba pilih kategori lain
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = filteredProducts
       .map(
         (item) => `
-        <div class="group relative">
-          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200">
-            <img src="${item.img}" alt="${item.title}" 
-                 class="object-cover w-full h-64 transition-transform duration-300 group-hover:scale-105" 
-                 loading="lazy">
+        <div class="group relative bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+          <div class="aspect-square w-full overflow-hidden">
+            <img 
+              src="${item.img}" 
+              alt="${item.title}" 
+              class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" 
+              loading="lazy"
+              onerror="this.src='assets/images/fresh-flower-1.jpg'"
+            >
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
           </div>
-          <div class="mt-4">
-            <h3 class="text-lg font-semibold">
-              <a href="#">
-                <span aria-hidden="true" class="absolute inset-0"></span>
-                ${item.title}
-              </a>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-300 line-clamp-1 mb-2">
+              ${item.title}
             </h3>
-            <p class="mt-1 text-sm text-gray-500">${item.desc}</p>
-            <p class="mt-2 text-base font-medium text-gray-800 dark:text-white">${item.price}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">${item.desc}</p>
+            <p class="text-lg font-semibold text-gray-900 dark:text-white">${item.price}</p>
           </div>
         </div>
       `
       )
       .join("");
+  },
+
+  orderProduct(title, price) {
+    const message = `Halo GG Florist! Saya tertarik untuk memesan:\n\nProduk: ${title}\nHarga: ${price}\n\nBisa tolong berikan informasi lebih lanjut?`;
+    const whatsappUrl = `https://wa.me/6282327044636?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  },
+
+  render() {
+    this.renderCategoryButtons();
+    this.renderProducts();
   },
 };
 
@@ -409,12 +508,12 @@ const Chatbot = {
 
       try {
         const requestBody = {
-          contents: [{parts: [{text: fullPrompt}]}],
+          contents: [{ parts: [{ text: fullPrompt }] }],
         };
 
         const response = await fetch(API_URL, {
           method: "POST",
-          headers: {"Content-Type": "application/json"},
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(requestBody),
         });
 
@@ -511,8 +610,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     Footer.render();
     Chatbot.init();
 
-    // Make custom order function globally available
+    // Make functions globally available
     window.sendCustomOrder = CustomOrder.send;
+    window.Gallery = Gallery; // Make Gallery object globally available
 
     console.log("GG Florist website initialized successfully!");
   } catch (error) {
