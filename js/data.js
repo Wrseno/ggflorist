@@ -7,8 +7,8 @@ const data = {
   // Product categories
   productCategories: [
     { id: "fresh", name: "Bunga Segar" },
-    { id: "artificial", name: "Bunga Palsu" },
-    { id: "bouquet", name: "Buket foto" },
+    { id: "artificial", name: "Bunga Pipa Bulu" },
+    { id: "bouquet", name: "Buket Foto" },
     { id: "acrylic", name: "Akrilik" },
   ],
 
@@ -16,100 +16,114 @@ const data = {
   products: [
     {
       "img": "assets/images/fresh-flower-4.jpg",
-      "title": "Buket mawar merah",
+      "title": "Buket Mawar Merah",
       "desc": "Buket mawar merah segar dengan pinggiran putih",
-      "price": "Rp 250.000",
+      "price": "Rp 750.000",
       "category": "fresh"
     },
     {
       "img": "assets/images/fresh-flower-3.jpg",
-      "title": "Buket mawar pink",
+      "title": "Buket Mawar Pink",
       "desc": "Rangkaian Bunga mawar pink yang elegan",
-      "price": "Rp 200.000",
-      "category": "fresh"
-    },
-    {
-      "img": "assets/images/fresh-flower-1.jpg",
-      "title": "Buket Mawar Putih",
-      "desc": "Rangkaian mawar putih premium dengan bunga pikok, dibungkus elegan dengan kertas putih dan pita hitam.",
-      "price": "Rp 180.000",
+      "price": "Rp 400.000",
       "category": "fresh"
     },
     {
       "img": "assets/images/fresh-flower-2.jpg",
       "title": "Buket Bunga Warna-Warni",
       "desc": "Buket ceria dengan perpaduan bunga krisan, mawar, dan aster dalam berbagai warna. Dibungkus kertas kraft dan pita pink.",
-      "price": "Rp 170.000",
+      "price": "Rp 100.000",
+      "category": "fresh"
+    },
+        {
+      "img": "assets/images/fresh-flower-1.jpg",
+      "title": "Buket Mawar Putih",
+      "desc": "Rangkaian mawar putih premium dengan bunga pikok, dibungkus elegan dengan kertas putih dan pita hitam.",
+      "price": "Rp 60.000",
       "category": "fresh"
     },
     {
       "img": "assets/images/artificial-flower.png",
       "title": "Buket Bunga Pipa Ungu & Oranye",
       "desc": "Buket bunga pipa kombinasi warna ungu dan oranye, dibungkus kertas metalik ungu yang mewah.",
-      "price": "Rp 120.000",
+      "price": "Rp 95.000",
       "category": "artificial"
-    },
-    {
-      "img": "assets/images/artificial-flower-2.png",
-      "title": "Buket Bunga Pipa Merah",
-      "desc": "Buket bunga unik yang terbuat dari pipa bulu (chenille) berwarna merah, dibungkus kertas iridescent dengan pita perak.",
-      "price": "Rp 135.000",
-      "category": "artificial"
-    },
-    {
-      "img": "assets/images/photo-bouquet.png",
-      "title": "Buket Foto Kenangan",
-      "desc": "Buket dengan foto kenangan dari momen spesial Anda.",
-      "price": "Rp 250.000",
-      "category": "bouquet"
-    },
-    {
-      "img": "assets/images/photo-bouquet-2.png",
-      "title": "Buket Foto Idol",
-      "desc": "Buket foto idol special ditambah dengan sedikit sentuhan bunga",
-      "price": "Rp 280.000",
-      "category": "bouquet"
     },
     {
       "img": "assets/images/artificial-flower-3.png",
       "title": "Buket Bunga Pipa Aneka Warna",
       "desc": "Buket bunga dari pipa bulu (chenille) warna-warni yang ceria, cocok untuk hadiah kelulusan atau ulang tahun.",
-      "price": "Rp 190.000",
+      "price": "Rp 80.000",
       "category": "artificial"
     },
     {
       "img": "assets/images/artificial-flower-4.png",
       "title": "Buket Bunga Pipa Bulu Biru",
       "desc": "Buket bunga dari pipa bulu (chenille) berwarna biru muda, dirangkai modern dengan pembungkus hitam dan iridescent.",
-      "price": "Rp 160.000",
+      "price": "Rp 70.000",
       "category": "artificial"
+    },
+    {
+      "img": "assets/images/artificial-flower-2.png",
+      "title": "Buket Bunga Pipa Merah",
+      "desc": "Buket bunga unik yang terbuat dari pipa bulu (chenille) berwarna merah, dibungkus kertas iridescent dengan pita perak.",
+      "price": "Rp 55.000",
+      "category": "artificial"
+    },
+    {
+      "img": "assets/images/photo-bouquet-3.png",
+      "title": "Buket Foto Kenangan",
+      "desc": "Buket dengan foto kenangan dari momen spesial Anda dipadukan dengan fresh flower.",
+      "price": "Rp 125.000",
+      "category": "bouquet"
+    },
+    {
+      "img": "assets/images/photo-bouquet.png",
+      "title": "Buket Foto Kenangan",
+      "desc": "Buket dengan foto kenangan dari momen spesial Anda.",
+      "price": "Rp 55.000",
+      "category": "bouquet"
+    },
+    {
+      "img": "assets/images/photo-bouquet-4.png",
+      "title": "Buket Foto Kenangan",
+      "desc": "Buket foto kenangan dari momen spesial Anda.",
+      "price": "Rp 50.000",
+      "category": "bouquet"
+    },
+    {
+      "img": "assets/images/photo-bouquet-2.png",
+      "title": "Buket Foto Idol",
+      "desc": "Buket foto idol special ditambah dengan sedikit sentuhan bunga",
+      "price": "Rp 95.000",
+      "category": "bouquet"
+    },
+     {
+      "img": "assets/images/acrylic-gift-3.png",
+      "title": "Papan Akrilik Ulang Tahun",
+      "desc": "Papan akrilik pink dengan tulisan \"Happy Birthday\", dihiasi bunga artifisial ungu dan putih di atas kuda-kuda kayu.",
+      "price": "Rp 200.000",
+      "category": "acrylic"
     },
     {
       "img": "assets/images/acrylic-gift.png",
       "title": "Papan Akrilik Wisuda",
       "desc": "Papan akrilik custom untuk ucapan selamat wisuda, dihiasi rangkaian bunga artifisial biru dan putih. Lengkap dengan tripod.",
-      "price": "Rp 300.000",
+      "price": "Rp 75.000",
       "category": "acrylic"
     },
     {
       "img": "assets/images/acrylic-gift-2.png",
       "title": "Papan Akrilik Seminar",
       "desc": "Papan akrilik untuk ucapan selamat dan sukses atas acara formal, dihiasi bunga artifisial nuansa ungu.",
-      "price": "Rp 350.000",
-      "category": "acrylic"
-    },
-    {
-      "img": "assets/images/acrylic-gift-3.png",
-      "title": "Papan Akrilik Ulang Tahun",
-      "desc": "Papan akrilik pink dengan tulisan \"Happy Birthday\", dihiasi bunga artifisial ungu dan putih di atas kuda-kuda kayu.",
-      "price": "Rp 220.000",
+      "price": "Rp 75.000",
       "category": "acrylic"
     },
     {
       "img": "assets/images/acrylic-gift-4.jpg",
       "title": "Papan Akrilik Pernikahan",
       "desc": "Papan akrilik custom untuk ucapan \"Happy Wedding\", dihiasi bunga artifisial nuansa pink, merah, dan putih.",
-      "price": "Rp 280.000",
+      "price": "Rp 75.000",
       "category": "acrylic"
     }
   ],
