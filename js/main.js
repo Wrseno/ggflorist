@@ -387,28 +387,28 @@ const Footer = {
                                      class="h-10 w-10 object-cover rounded-full">
                             <span class="text-2xl font-bold text-white dark:text-white font-logo">GG Florist</span>
                         </a>
-                        <p class="mt-4 text-sm text-blue-100/90 dark:text-gray-200 max-w-xs">
+                        <p class="mt-4 text-sm text-blue-100 dark:text-gray-200 max-w-xs">
                             Penyedia rangkaian bunga segar dan hadiah spesial untuk semua momen berharga Anda di Semarang dan sekitarnya.
                         </p>
                         <div class="mt-6 flex justify-center md:justify-start gap-x-4">
                             <a href="${
                               data.contactInfo.socials.whatsapp
                             }" target="_blank" 
-                                 class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
+                                 class="text-blue-100 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
                                 <span class="sr-only">WhatsApp</span>
                                 <i class="fab fa-whatsapp text-2xl"></i>
                             </a>
                             <a href="${
                               data.contactInfo.socials.instagram
                             }" target="_blank" 
-                                 class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
+                                 class="text-blue-100 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
                                 <span class="sr-only">Instagram</span>
                                 <i class="fab fa-instagram text-2xl"></i>
                             </a>
                             <a href="${
                               data.contactInfo.socials.tiktok
                             }" target="_blank" 
-                                 class="text-blue-200 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
+                                 class="text-blue-100 hover:text-white dark:text-gray-300 dark:hover:text-white transition-colors">
                                 <span class="sr-only">TikTok</span>
                                 <i class="fab fa-tiktok text-2xl"></i>
                             </a>
@@ -417,7 +417,7 @@ const Footer = {
                     
                     <div class="flex flex-col items-center md:items-start">
                         <h3 class="text-lg font-semibold text-white dark:text-white">Tautan Cepat</h3>
-                        <ul class="mt-4 space-y-3 text-blue-100/90 dark:text-gray-200">
+                        <ul class="mt-4 space-y-3 text-blue-100 dark:text-gray-200">
                             <li><a href="#home" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Home</a></li>
                             <li><a href="#about" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Tentang Kami</a></li>
                             <li><a href="#produk" class="hover:text-white hover:underline dark:hover:text-white transition-colors">Produk</a></li>
@@ -429,23 +429,23 @@ const Footer = {
                     
                     <div class="flex flex-col items-center md:items-start">
                         <h3 class="text-lg font-semibold text-white dark:text-white">Kontak</h3>
-                        <ul class="mt-4 space-y-4 text-blue-100/90 dark:text-gray-200">
+                        <ul class="mt-4 space-y-4 text-blue-100 dark:text-gray-200">
                             <li class="flex items-center gap-x-3">
-                                <i class="fas fa-phone h-5 w-5 flex-none text-blue-200 dark:text-gray-300"></i>
+                                <i class="fas fa-phone h-5 w-5 flex-none text-blue-100 dark:text-gray-300"></i>
                                 <a href="tel:${data.contactInfo.phone}" 
                                      class="hover:text-white dark:hover:text-white transition-colors">
                                     ${data.contactInfo.phone}
                                 </a>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <i class="fas fa-envelope h-5 w-5 flex-none text-blue-200 dark:text-gray-300"></i>
+                                <i class="fas fa-envelope h-5 w-5 flex-none text-blue-100 dark:text-gray-300"></i>
                                 <a href="mailto:${data.contactInfo.email}" 
                                      class="hover:text-white dark:hover:text-white transition-colors">
                                     ${data.contactInfo.email}
                                 </a>
                             </li>
                             <li class="flex items-center gap-x-3">
-                                <i class="fas fa-map-marker-alt h-5 w-5 flex-none text-blue-200 dark:text-gray-300"></i>
+                                <i class="fas fa-map-marker-alt h-5 w-5 flex-none text-blue-100 dark:text-gray-300"></i>
                                 <span>Semarang, Jawa Tengah</span>
                             </li>
                         </ul>
@@ -525,12 +525,12 @@ const Chatbot = {
 
       try {
         const requestBody = {
-          contents: [{parts: [{text: fullPrompt}]}],
+          contents: [{ parts: [{ text: fullPrompt }] }],
         };
 
         const response = await fetch(API_URL, {
           method: "POST",
-          headers: {"Content-Type": "application/json"},
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(requestBody),
         });
 
