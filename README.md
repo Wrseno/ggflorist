@@ -2,7 +2,7 @@
 
 Sebuah landing page yang elegan dan cepat untuk **GG Florist**, dirancang untuk memberikan pengalaman terbaik bagi pelanggan dalam menemukan buket impian mereka, didukung oleh asisten AI yang ramah.
 
-![Screenshot GG Florist](![image](https://github.com/user-attachments/assets/792ef8af-9c7f-4c87-9b1a-8826090a4858)
+(![image](![GG Florist - Hadiah Indah untuk Momen Berharga Anda](https://github.com/user-attachments/assets/513b3ef2-3765-4c2a-82d7-8629e2557ef6))
 
 ---
 
@@ -18,6 +18,7 @@ Berikut adalah fitur-fitur utama yang diimplementasikan dalam website ini:
 
 * 🚀 **Performa Cepat**: Dibangun dengan teknologi modern untuk memastikan waktu muat yang singkat dan pengalaman Browse yang lancar tanpa lemot.
 * 🤖 **Asisten AI Chatbot**: Sebuah chatbot cerdas yang dilatih dengan data toko untuk menjawab pertanyaan pelanggan seputar produk, cara pesan, dan lainnya dengan ramah dan akurat.
+* 🌓 **Light & Dark Mode**: Mempercantik tampilan dan menyesuaikan preferensi kenyamanan pengguna dengan menerapkan 2 mode (gelap dan terang)
 * 💐 **Katalog Produk**: Bagian khusus yang menampilkan berbagai pilihan buket bunga yang tersedia, lengkap dengan deskripsi dan harga.
 * 🎨 **Formulir Kustomisasi**: Pelanggan dapat mengajukan permintaan buket kustom sesuai dengan keinginan mereka melalui formulir yang interaktif.
 * 📋 **Panduan Cara Pesan**: Langkah-langkah yang jelas dan mudah diikuti bagi pelanggan yang ingin melakukan pemesanan.
@@ -47,7 +48,7 @@ Untuk menjalankan proyek ini secara lokal, ikuti langkah-langkah berikut:
 
 1.  Clone repository ini ke mesin lokal Anda.
     ```sh
-    git clone [https://github.com/username-anda/ggflorist.git](https://github.com/username-anda/ggflorist.git)
+    git clone [https://github.com/Wrseno/ggflorist.git](https://github.com/Wrseno/ggflorist.git)
     ```
 2.  Masuk ke direktori proyek.
     ```sh
